@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _movementSpeed;
     private Camera _camera;
     Vector3 movementVector;
+    Vector3 lastMovementVector;
 
     private void Awake()
     {
@@ -21,23 +22,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 lastMovementVector;
         movementVector = Vector3.zero;
 
         movementVector.x = SimpleInput.GetAxis("Horizontal");
         movementVector.z = SimpleInput.GetAxis("Vertical");
 
         if (movementVector.x != 0 && movementVector.z != 0)
+        {
             lastMovementVector = new Vector3(movementVector.x, 0, movementVector.z);
+            transform.forward = movementVector;
+        }
         else
-            lastMovementVector = new Vector3(0, 0, 0);
-        
-
-        transform.forward = lastMovementVector;
+        {
+            transform.forward = lastMovementVector;
+        }
 
         movementVector.y += Physics.gravity.y;
 
-        
+
     }
 
     private void FixedUpdate()

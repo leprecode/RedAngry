@@ -6,11 +6,11 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private float _damage;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.transform.CompareTag("Enemy"))
+        if (other.transform.CompareTag("Enemy"))
         {
-            if (collision.transform.TryGetComponent<IDamagable>(out IDamagable damagable))
+            if (other.transform.TryGetComponent<IDamagable>(out IDamagable damagable))
             {
                 damagable.ApplyDamage(_damage);
             }
