@@ -12,7 +12,6 @@ public class DestroyedEnemy : MonoBehaviour
     private void Start()
     {
         _onDestroyVFX.Play();
-
         Destroy(this.gameObject,_timeToDestroy);
     }
 }
