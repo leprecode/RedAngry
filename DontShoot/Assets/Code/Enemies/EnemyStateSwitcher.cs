@@ -73,8 +73,6 @@ public class EnemyStateSwitcher : MonoBehaviour, IDamagable
         }
     }
 
-
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))

@@ -27,6 +27,8 @@ public class Spawner
 
     private void GetSpawnPoints()
     {
+        _pointsToSpawn = new List<Transform>();
+
         GameObject parentOfSpawnPoints = GameObject.FindGameObjectWithTag(_tagToSearch);
 
         for (int i = 0; i < parentOfSpawnPoints.transform.childCount; i++)
