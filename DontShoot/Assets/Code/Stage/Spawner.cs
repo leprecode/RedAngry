@@ -18,23 +18,15 @@ public class Spawner
     [SerializeField] private List<int> _countForeachTypeOfEnemyWave3;
 
 
-    public void Initialize()
+    public void Initialize(List<Wave> waves)
     {
-         _prefabsOfTypesEnemyWave1 = new List<GameObject>();
-       _countForeachTypeOfEnemyWave1 = new List<int>();
+        GetWaves(waves);
 
-        _prefabsOfTypesEnemyWave2 = new List<GameObject>();
-        _countForeachTypeOfEnemyWave2 = new List<int>();
+        GetSpawnPoints();
+    }
 
-        _prefabsOfTypesEnemyWave3 = new List<GameObject>();
-        _countForeachTypeOfEnemyWave3 = new List<int>();
-
-        for (int i = 0; i < ; i++)
-        {
-
-        }
-
-
+    private void GetSpawnPoints()
+    {
         GameObject parentOfSpawnPoints = GameObject.FindGameObjectWithTag(_tagToSearch);
 
         for (int i = 0; i < parentOfSpawnPoints.transform.childCount; i++)
@@ -43,6 +35,37 @@ public class Spawner
         }
     }
 
+    private void GetWaves(List<Wave> waves)
+    {
+        switch (waves.Count)
+        {
+            case 1:
+                _prefabsOfTypesEnemyWave1 = new List<GameObject>();
+                _countForeachTypeOfEnemyWave1 = new List<int>();
 
+                this._prefabsOfTypesEnemyWave1 = waves[0].GetWaveEnemiesTypes();
+                this._countForeachTypeOfEnemyWave1 = waves[0].GetWaveEnemiesCount();
+                break;
 
+            case 2:
+                _prefabsOfTypesEnemyWave2 = new List<GameObject>();
+                _countForeachTypeOfEnemyWave2 = new List<int>();
+
+                this._prefabsOfTypesEnemyWave2 = waves[1].GetWaveEnemiesTypes();
+                this._countForeachTypeOfEnemyWave2 = waves[1].GetWaveEnemiesCount();
+                break;
+
+            case 3:
+                _prefabsOfTypesEnemyWave3 = new List<GameObject>();
+                _countForeachTypeOfEnemyWave3 = new List<int>();
+
+                this._prefabsOfTypesEnemyWave3 = waves[2].GetWaveEnemiesTypes();
+                this._countForeachTypeOfEnemyWave3 = waves[2].GetWaveEnemiesCount();
+                break;
+
+            default:
+                Debug.LogError("Waves count was unexpected");
+                break;
+        }
+    }
 }

@@ -15,16 +15,16 @@ public class StageBootStrapper : MonoBehaviour
 
 
     [SerializeField] private StageData _stageData;
-    private Spawner _spawner;
+    public Spawner _spawner { get; private set; }
+    public StageGameplay _stageManager { get; private set; }
+
 
     private void Awake()
     {
         _spawner = new Spawner();
-       _spawner.Initialize();
-    }
+        _spawner.Initialize(_stageData.GetWaves());
 
-    public StageData GetStageData()
-    {
-        return _stageData;
+        _stageManager = new StageGameplay();
+        _stageManager.Initialize(this._spawner, _stageData.GetWavePause());
     }
 }

@@ -9,9 +9,8 @@ public class Wave : ScriptableObject
     [SerializeField] private List<GameObject> _prefabsOfTypesEnemyWave = new List<GameObject>();
     [SerializeField] private List<int> _countForeachTypeOfEnemyWave = new List<int>();
 
-    public void GetWave(out List<GameObject> prefabsOfTypesEnemyWave, out List<int> countForeachTypeOfEnemyWave)
-    {
-        prefabsOfTypesEnemyWave = this._prefabsOfTypesEnemyWave;
-        countForeachTypeOfEnemyWave = this._countForeachTypeOfEnemyWave;
-    }
+    public List<GameObject> GetWaveEnemiesTypes() => _prefabsOfTypesEnemyWave;
+
+    public List<int> GetWaveEnemiesCount() => _countForeachTypeOfEnemyWave;
+
 }

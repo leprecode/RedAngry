@@ -7,9 +7,7 @@ public class StageData : ScriptableObject
     [SerializeField] private int _pauseBetweenWaves;
     [SerializeField] private List<Wave> _waves = new List<Wave>();
 
+    public List<Wave> GetWaves() => _waves;
 
-    public int GetWavePause()
-    {
-        return _pauseBetweenWaves;
-    }
+    public int GetWavePause() => _pauseBetweenWaves;
 }
