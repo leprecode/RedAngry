@@ -3,6 +3,7 @@
 -a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PlayerScriptAssemblies\UnityEngine.TestRunner.dll"
 -a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PlayerScriptAssemblies\Unity.Timeline.dll"
 -a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PlayerScriptAssemblies\Unity.TextMeshPro.dll"
+-a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PlayerScriptAssemblies\Tayx.Graphy.dll"
 -a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PlayerScriptAssemblies\UnityEngine.UI.dll"
 -a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PlayerScriptAssemblies\Unity.Notifications.Android.dll"
 -a="C:\Users\alexe\Documents\Unity\RedAngry\DontShoot\Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\AOT\Newtonsoft.Json.dll"
