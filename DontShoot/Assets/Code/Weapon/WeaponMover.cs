@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMover : MonoBehaviour
+namespace Assets.Code.Weapon
 {
-    [SerializeField] private Transform _target;
-
-
-    private void LateUpdate()
+    public class WeaponMover : MonoBehaviour
     {
-        transform.position = _target.position;
+        [SerializeField] private Transform _target;
+
+
+        private void LateUpdate()
+        {
+            transform.position = _target.position;
+        }
     }
 }

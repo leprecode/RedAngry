@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthUI : MonoBehaviour
+namespace Assets.Code.Player
 {
-    [SerializeField] private Image _playerHealthBarImage;
+    public class PlayerHealthUI : MonoBehaviour
+    {
+        [SerializeField] private Image _playerHealthBarImage;
 
 
+    }
 }

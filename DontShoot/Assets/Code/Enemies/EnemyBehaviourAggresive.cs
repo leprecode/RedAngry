@@ -1,43 +1,46 @@
 using UnityEngine;
 
-public class EnemyBehaviourAggresive : IEnemyBehaviour
+namespace Assets.Code.Enemies
 {
-    private Transform _target;
-    private Transform _myTransform;
-    private float _rotationSpeed;
-    private float _movementSpeed;
-    public float _damage;
-
-    public EnemyBehaviourAggresive(Transform transform, float rotationSpeed, float movementSpeed)
+    public class EnemyBehaviourAggresive : IEnemyBehaviour
     {
-        _myTransform = transform;
-        _rotationSpeed = rotationSpeed;
-        _movementSpeed = movementSpeed;
-    }
+        private Transform _target;
+        private Transform _myTransform;
+        private float _rotationSpeed;
+        private float _movementSpeed;
+        public float _damage;
 
-    public void Enter()
-    {
-        Debug.Log("EnterEnemyBehaviourAggresive");
-        _target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+        public EnemyBehaviourAggresive(Transform transform, float rotationSpeed, float movementSpeed)
+        {
+            _myTransform = transform;
+            _rotationSpeed = rotationSpeed;
+            _movementSpeed = movementSpeed;
+        }
 
-    public void Exit()
-    {
-        Debug.Log("ExitEnemyBehaviourAggresive");
-    }
+        public void Enter()
+        {
+            Debug.Log("EnterEnemyBehaviourAggresive");
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
+        }
 
-    public void Update()
-    {
-        Debug.Log("UpdateEnemyBehaviourAggresive");
+        public void Exit()
+        {
+            Debug.Log("ExitEnemyBehaviourAggresive");
+        }
 
-        FollowPlayer();
-    }
+        public void Update()
+        {
+            Debug.Log("UpdateEnemyBehaviourAggresive");
 
-    public void FollowPlayer()
-    {
-        _myTransform.rotation = Quaternion.Slerp(_myTransform.rotation,
-        Quaternion.LookRotation(_target.position - _myTransform.position), _rotationSpeed * Time.fixedDeltaTime);
+            FollowPlayer();
+        }
 
-        _myTransform.position += _myTransform.forward * _movementSpeed * Time.fixedDeltaTime;
+        public void FollowPlayer()
+        {
+            _myTransform.rotation = Quaternion.Slerp(_myTransform.rotation,
+            Quaternion.LookRotation(_target.position - _myTransform.position), _rotationSpeed * Time.fixedDeltaTime);
+
+            _myTransform.position += _myTransform.forward * _movementSpeed * Time.fixedDeltaTime;
+        }
     }
 }

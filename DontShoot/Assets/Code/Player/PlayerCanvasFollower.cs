@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCanvasFollower : MonoBehaviour
+namespace Assets.Code.Player
 {
-    private Transform _player;
-
-    private void Awake()
+    public class PlayerCanvasFollower : MonoBehaviour
     {
-        _player = FindObjectOfType<Player>().gameObject.transform;
-    }
+        private Transform _player;
 
-    private void LateUpdate()
-    {
-        transform.position = _player.position;
+        private void Awake()
+        {
+            _player = FindObjectOfType<Player>().gameObject.transform;
+        }
+
+        private void LateUpdate()
+        {
+            transform.position = _player.position;
+        }
     }
 }

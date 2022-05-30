@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroyedEnemy : MonoBehaviour
+namespace Assets.Code.Enemies
 {
-    [SerializeField] ParticleSystem _onDestroyVFX;
-    private const float _timeToDestroyOffset = 2.0f;
-    private float _timeToDestroy => _onDestroyVFX.main.duration + _timeToDestroyOffset;
-
-
-    private void Start()
+    public class DestroyedEnemy : MonoBehaviour
     {
-        _onDestroyVFX.Play();
-        Destroy(this.gameObject,_timeToDestroy);
+        [SerializeField] ParticleSystem _onDestroyVFX;
+        private const float _timeToDestroyOffset = 2.0f;
+        private float _timeToDestroy => _onDestroyVFX.main.duration + _timeToDestroyOffset;
+
+
+        private void Start()
+        {
+            _onDestroyVFX.Play();
+            Destroy(gameObject, _timeToDestroy);
+        }
     }
 }

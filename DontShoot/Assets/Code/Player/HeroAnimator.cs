@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class HeroAnimator : MonoBehaviour
+namespace Assets.Code.Player
 {
-    [SerializeField] private Animator _animator;
-    [SerializeField] private CharacterController _characterController;
-
-    private const string _movingState = "Running";
-
-    private void Update()
+    public class HeroAnimator : MonoBehaviour
     {
-        _animator.SetFloat(_movingState, _characterController.velocity.magnitude, 0.1f, Time.deltaTime);
-        Debug.Log(_characterController.velocity.magnitude);
+        [SerializeField] private Animator _animator;
+        [SerializeField] private CharacterController _characterController;
+
+        private const string _movingState = "Running";
+
+        private void Update()
+        {
+            _animator.SetFloat(_movingState, _characterController.velocity.magnitude, 0.1f, Time.deltaTime);
+        }
     }
 }
-

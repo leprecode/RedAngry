@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed3eb329efb2524eac51d69d569c6cb, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  _prefabsOfTypesEnemyWave: []
-  _countForeachTypeOfEnemyWave: 
+  _prefabsOfTypesEnemyWave:
+  - {fileID: 2408400359117473918, guid: 43bfa0d21bbe41448a155f4c61e55adf, type: 3}
+  _countForeachTypeOfEnemyWave: 14000000

@@ -1,53 +1,53 @@
+using Assets.Code.CameraLogic;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+namespace Assets.Code.Player
 {
-    [SerializeField] private CharacterController _characterController;
-    [SerializeField] private float _movementSpeed;
-    private Camera _camera;
-    Vector3 movementVector;
-    Vector3 lastMovementVector;
-
-    private void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        _camera = Camera.main;
-    }
+        [SerializeField] private CharacterController _characterController;
+        [SerializeField] private float _movementSpeed;
+        private Camera _camera;
+        Vector3 movementVector;
+        Vector3 lastMovementVector;
 
-    private void Start()
-    {
-        CameraFollow();
-    }
+        private void Awake() => _camera = Camera.main;
 
-    private void Update()
-    {
-        movementVector = Vector3.zero;
-
-        movementVector.x = SimpleInput.GetAxis("Horizontal");
-        movementVector.z = SimpleInput.GetAxis("Vertical");
-
-        if (movementVector.x != 0 && movementVector.z != 0)
+        private void Start()
         {
-            lastMovementVector = new Vector3(movementVector.x, 0, movementVector.z);
-            transform.forward = movementVector;
-        }
-        else
-        {
-            transform.forward = lastMovementVector;
+            CameraFollow();
         }
 
-        movementVector.y += Physics.gravity.y;
+        private void Update()
+        {
+            movementVector = Vector3.zero;
+
+            movementVector.x = SimpleInput.GetAxis("Horizontal");
+            movementVector.z = SimpleInput.GetAxis("Vertical");
+
+            if (movementVector.x != 0 && movementVector.z != 0)
+            {
+                lastMovementVector = new Vector3(movementVector.x, 0, movementVector.z);
+                transform.forward = movementVector;
+            }
+            else
+            {
+                transform.forward = lastMovementVector;
+            }
+
+            movementVector.y += Physics.gravity.y;
 
 
+        }
+
+        private void FixedUpdate()
+        {
+            _characterController.Move(_movementSpeed * movementVector * Time.fixedDeltaTime);
+        }
+
+        private void CameraFollow() =>
+        _camera.GetComponent<CameraFollow>().Follow(gameObject);
     }
-
-    private void FixedUpdate()
-    {
-        _characterController.Move(_movementSpeed * movementVector * Time.fixedDeltaTime);
-    }
-
-    private void CameraFollow() =>
-    _camera.GetComponent<CameraFollow>().Follow(this.gameObject);
 }
-

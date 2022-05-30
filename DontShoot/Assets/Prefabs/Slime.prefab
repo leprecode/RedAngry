@@ -412,9 +412,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2413610702982981202}
   - component: {fileID: 2322918611579018128}
-  - component: {fileID: 2408400359117473913}
   - component: {fileID: 2408400359117473915}
   - component: {fileID: 2408400359117473912}
+  - component: {fileID: 3264049287702349058}
   m_Layer: 0
   m_Name: Slime
   m_TagString: Enemy
@@ -457,27 +457,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2408400359117473913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2408400359117473918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27cb6c1c8a5a4db4c9bd0cf9d875e3c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 15
-  _damage: 5
-  _movementSpeed: 2
-  _rotationSpeed: 15
-  _body: {fileID: 2408187860217820096}
-  _destroyedBody: {fileID: 6452184268051388708, guid: 838f4c19dca13d04889a3b39d3a6bff1,
-    type: 3}
-  _onDestroyVFX: {fileID: 2724948099300090138, guid: 0d8636f291fe9a64f86855b800f0b689,
-    type: 3}
 --- !u!135 &2408400359117473915
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -507,3 +486,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &3264049287702349058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2408400359117473918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1d21ae99044c947a2f9a93501f6df9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _movementSpeed: 2
+  _rotationSpeed: 10
+  _body: {fileID: 2408187860217820096}
+  _destroyedBody: {fileID: 6452184268051388708, guid: 838f4c19dca13d04889a3b39d3a6bff1,
+    type: 3}
+  _onDestroyVFX: {fileID: 2724948099300090138, guid: 0d8636f291fe9a64f86855b800f0b689,
+    type: 3}
+  _health: 20

@@ -1,42 +1,44 @@
 ﻿using UnityEngine;
 
-public class EnemyBehaviourDeadly : IEnemyBehaviour
+namespace Assets.Code.Enemies
 {
-    private GameObject _thisGameObject;
-    private GameObject _body;
-    private GameObject _destroyedBody;
-    private ParticleSystem _onDestroyVFX;
-    private float _timeToDestroy => _onDestroyVFX.duration;
-
-    public EnemyBehaviourDeadly(GameObject thisGameObject,GameObject body, GameObject destroyedBody, ParticleSystem onDestroyVFX)
+    public class EnemyBehaviourDeadly : IEnemyBehaviour
     {
-        _thisGameObject = thisGameObject;
-        _destroyedBody = destroyedBody;
-        _onDestroyVFX = onDestroyVFX;
-        _body = body;
-    }
+        private GameObject _thisGameObject;
+        private GameObject _body;
+        private GameObject _destroyedBody;
+        private ParticleSystem _onDestroyVFX;
+        private float _timeToDestroy => _onDestroyVFX.main.duration;
 
-    public void Die()
-    {
-        GameObject.Destroy(_body);
-        GameObject destroyed = GameObject.Instantiate(_destroyedBody,_thisGameObject.transform.position, _thisGameObject.transform.rotation);
-        GameObject.Destroy(_thisGameObject,_timeToDestroy);
-    }
+        public EnemyBehaviourDeadly(GameObject thisGameObject, GameObject body, GameObject destroyedBody, ParticleSystem onDestroyVFX)
+        {
+            _thisGameObject = thisGameObject;
+            _destroyedBody = destroyedBody;
+            _onDestroyVFX = onDestroyVFX;
+            _body = body;
+        }
 
-    public void Enter()
-    {
-        Debug.Log("EnterEnemyBehaviourDeadly");
+        public void Die()
+        {
+            Object.Destroy(_body);
+            GameObject destroyed = Object.Instantiate(_destroyedBody, _thisGameObject.transform.position, _thisGameObject.transform.rotation);
+            Object.Destroy(_thisGameObject, _timeToDestroy);
+        }
 
-        Die();
-    }
+        public void Enter()
+        {
+            _thisGameObject.GetComponent<Enemy>().stageGameplayState.EnemyDestroyed();
+            Die();
+        }
 
-    public void Exit()
-    {
-        Debug.Log("ExitEnemyBehaviourDeadly");
-    }
+        public void Exit()
+        {
+            Debug.Log("ExitEnemyBehaviourDeadly");
+        }
 
-    public void Update()
-    {
-        Debug.Log("UpdateEnemyBehaviourDeadly");
+        public void Update()
+        {
+            Debug.Log("UpdateEnemyBehaviourDeadly");
+        }
     }
 }

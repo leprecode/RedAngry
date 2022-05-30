@@ -1,9 +1,8 @@
-﻿public interface IDamagable
+﻿namespace Assets.Code.Enemies
 {
-    void ApplyDamage(float damage);
-    void CheckHealth();
-    void Die();
+    public interface IDamagable
+    {
+        void ApplyDamage(float damage);
+        void CheckHealth();
+    }
 }
-
-
-

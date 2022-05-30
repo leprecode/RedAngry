@@ -15,3 +15,4 @@ MonoBehaviour:
   _pauseBetweenWaves: 3
   _waves:
   - {fileID: 11400000, guid: 7c103c3e9f35e964680352eafa83154f, type: 2}
+  - {fileID: 11400000, guid: 47906aa9a58b50c40b9a816b7e426ead, type: 2}

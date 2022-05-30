@@ -1,24 +1,28 @@
+using Assets.Code.Enemies;
 using UnityEngine;
 
-public class Player : MonoBehaviour, IDamagable
+namespace Assets.Code.Player
 {
-    [SerializeField] private float _health;
-
-    public void ApplyDamage(float damage)
+    public class Player : MonoBehaviour, IDamagable
     {
-        _health -= damage;
+        [SerializeField] private float _health;
 
-        CheckHealth();
-    }
+        public void ApplyDamage(float damage)
+        {
+            _health -= damage;
 
-    public void CheckHealth()
-    {
-        if (_health <= 0)
-            Die();
-    }
+            CheckHealth();
+        }
 
-    public void Die()
-    {
-        Destroy(this.gameObject);
+        public void CheckHealth()
+        {
+            if (_health <= 0)
+                Die();
+        }
+
+        public void Die()
+        {
+            Destroy(gameObject);
+        }
     }
 }

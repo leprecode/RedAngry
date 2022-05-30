@@ -1,20 +1,24 @@
+using Assets.Code.Enemies;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+namespace Assets.Code.Weapon
 {
-    [SerializeField] private float _damage;
-
-    private void OnTriggerEnter(Collider other)
+    public class Weapon : MonoBehaviour
     {
-        if (other.transform.CompareTag("Enemy"))
-        {
-            if (other.transform.TryGetComponent<IDamagable>(out IDamagable damagable))
-            {
-                damagable.ApplyDamage(_damage);
-            }
+        [SerializeField] private float _damage;
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.CompareTag("Enemy"))
+            {
+                if (other.transform.TryGetComponent(out IDamagable damagable))
+                {
+                    damagable.ApplyDamage(_damage);
+                }
+
+            }
         }
     }
 }
