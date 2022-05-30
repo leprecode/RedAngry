@@ -36,9 +36,9 @@ namespace Assets.Code.Level
 
         private void SpawnWave(int currentWave)
         {
-                _spawner.Spawn(_timeBetweenSpawn,
-                Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesTypes(),
-                Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount());
+            _spawner.Spawn(_timeBetweenSpawn,
+            Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesTypes(),
+            Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount());
 
             Debug.Log("StartSpawnNewWave");
 
