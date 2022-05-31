@@ -34,8 +34,7 @@ namespace Assets.Code.Enemies
 
         private void SetBehaviour(IEnemyBehaviour newBehaviour)
         {
-            if (_currentBehaviour != null)
-                _currentBehaviour.Exit();
+            _currentBehaviour?.Exit();
 
             _currentBehaviour = newBehaviour;
             _currentBehaviour.Enter();
