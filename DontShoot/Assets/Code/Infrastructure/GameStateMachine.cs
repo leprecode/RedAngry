@@ -5,25 +5,45 @@ namespace Assets.Code.Infrastructure
 {
     public class GameStateMachine
     {
-        private readonly Dictionary<Type, IGameState> _states;
-        private IGameState _activeState;
+        private readonly Dictionary<Type, IExitableGameState> _states;
+        private IExitableGameState _activeState;
 
         public GameStateMachine(SceneLoader sceneLoader)
         {
-            _states = new Dictionary<Type, IGameState>
+            _states = new Dictionary<Type, IExitableGameState>
             {
                 [typeof(GameBootstrapState)] = new GameBootstrapState(this, sceneLoader),
-                /*[typeof(LoadLevelState)] = new LoadLevelState(),*/
+                [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader),
+                [typeof(InGameState)] = new InGameState(this, sceneLoader),
+                [typeof(InMainMenuState)] = new InMainMenuState(this, sceneLoader),
             };
         }
 
-        public void Enter<TState>() where TState : IGameState
+        public void Enter<TState>() where TState : class, IGameState
         {
-            _activeState?.Exit();
-            IGameState state = _states[typeof(TState)];
-            _activeState = state;
+            IGameState state = ChangeState<TState>();
             state.Enter();
         }
+
+        public void Enter<TState, TPayload>(TPayload payload) where TState : class, IPayloadedGameState<TPayload>
+        {
+            TState state = ChangeState<TState>();
+            state.Enter(payload);
+        }
+        private TState ChangeState<TState>() where TState : class, IExitableGameState
+        {
+            _activeState?.Exit();
+
+            TState state = GetState<TState>();
+            _activeState = state;
+
+            return state;
+        }
+
+        private TState GetState<TState>() where TState : class, IExitableGameState =>
+        _states[typeof(TState)] as TState;
+
     }
+
 }
 

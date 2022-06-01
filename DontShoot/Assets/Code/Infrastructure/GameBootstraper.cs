@@ -8,11 +8,6 @@ namespace Assets.Code.Infrastructure
     {
         private Game _game;
 
-        public Coroutine StartCoroutine(IEnumerator coroutine)
-        {
-            throw new System.NotImplementedException();
-        }
-
         private void Awake()
         {
             _game = new Game(this);

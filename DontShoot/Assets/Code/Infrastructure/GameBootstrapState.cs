@@ -5,7 +5,7 @@ namespace Assets.Code.Infrastructure
 {
     public class GameBootstrapState : IGameState
     {
-        private const string LoadingScene = "Initial";
+        private const string InitialScene = "Initial";
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
 
@@ -18,12 +18,11 @@ namespace Assets.Code.Infrastructure
         public void Enter()
         {
             Debug.Log("Bootsrap enter!");
-            _sceneLoader.Load(LoadingScene,EnterLoadLevel);
+            _sceneLoader.Load(InitialScene,EnterLoadLevel);
         }
 
-        private void EnterLoadLevel()
-        {
-        }
+        private void EnterLoadLevel() => 
+            _gameStateMachine.Enter<LoadSceneState, string>("MainMenu");
 
         public void Exit()
         {
