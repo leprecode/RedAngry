@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Code.MainMenu;
+using UnityEngine;
 
 namespace Assets.Code.Infrastructure
 {
@@ -6,6 +7,7 @@ namespace Assets.Code.Infrastructure
     {
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
+        public MainMenuUI mainMenuUI { get; private set; }
 
         public InMainMenuState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
         {
@@ -16,6 +18,7 @@ namespace Assets.Code.Infrastructure
         public void Enter()
         {
             Debug.Log("InMainMenuState");
+            mainMenuUI = new MainMenuUI(_gameStateMachine);
         }
 
         public void Exit()

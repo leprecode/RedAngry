@@ -22,15 +22,29 @@
             switch (sceneName)
             {
                 case nameOfMainMenuScene:
-                    _sceneLoader.Load(sceneName);
-                    _gameStateMachine.Enter<InMainMenuState>();
+                    _sceneLoader.Load(sceneName, InitialInMainMenuState);
+                    EnterInMainMenuState();
                     break;
 
                 default:
                     _sceneLoader.Load(sceneName);
-                    _gameStateMachine.Enter<InGameState>();
+                    EnterInGameState();
                     break;
             }
+        }
+
+        private void InitialInMainMenuState()
+        {
+            _gameStateMachine.GetState<InMainMenuState>().mainMenuUI.Initial();
+        }
+
+        private void EnterInMainMenuState()
+        {
+            _gameStateMachine.Enter<InMainMenuState>();
+        }       
+        private void EnterInGameState()
+        {
+            _gameStateMachine.Enter<InGameState>();
         }
 
         public void Exit()

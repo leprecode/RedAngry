@@ -40,7 +40,7 @@ namespace Assets.Code.Infrastructure
             return state;
         }
 
-        private TState GetState<TState>() where TState : class, IExitableGameState =>
+        public TState GetState<TState>() where TState : class, IExitableGameState =>
         _states[typeof(TState)] as TState;
 
     }
