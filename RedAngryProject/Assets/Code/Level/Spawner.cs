@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Code.Level
 {
-    public class Spawner : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour
     {
         private const string _tagToSearch = "SpawnPoints";
         private Vector3 _spawnOffsetY = new Vector3(0f, 0.5f, 0f);

@@ -8,6 +8,8 @@ namespace Assets.Code.Level
     {
         [SerializeField] private int _pauseBetweenWaves;
         [SerializeField] private List<Wave> _waves = new List<Wave>();
+        [SerializeField] private GameObject _stagePrefab;
+        [SerializeField] private GameObject _heroPrefab;
 
         public List<Wave> GetAllWaves() => _waves;
 

@@ -3,6 +3,7 @@
     public class LoadSceneState : IPayloadedGameState<string>
     {
         private const string nameOfMainMenuScene = "MainMenu";
+        private const string nameOfLoadingScene = "Loading";
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
 
@@ -22,8 +23,7 @@
             switch (sceneName)
             {
                 case nameOfMainMenuScene:
-                    _sceneLoader.Load(sceneName, InitialInMainMenuState);
-                    EnterInMainMenuState();
+                    _sceneLoader.Load(sceneName, EnterInMainMenuState);
                     break;
 
                 default:
@@ -33,15 +33,15 @@
             }
         }
 
+        private void EnterInMainMenuState()
+        {
+            _gameStateMachine.Enter<InMainMenuState>();
+            InitialInMainMenuState();
+        }
         private void InitialInMainMenuState()
         {
             _gameStateMachine.GetState<InMainMenuState>().mainMenuUI.Initial();
         }
-
-        private void EnterInMainMenuState()
-        {
-            _gameStateMachine.Enter<InMainMenuState>();
-        }       
         private void EnterInGameState()
         {
             _gameStateMachine.Enter<InGameState>();

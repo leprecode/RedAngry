@@ -8,7 +8,7 @@ namespace Assets.Code.Level
 
         private StageStateMachine stateMachine;
         public static Stage instance { get; private set; }
-        public Spawner Spawner { get; set; }
+        public EnemySpawner Spawner { get; set; }
         public StageData GetStageData => stageData;
         public StageStateMachine GetStateMachine => stateMachine;
 
@@ -19,7 +19,7 @@ namespace Assets.Code.Level
 
             MakeStaticInstacne();
 
-            Spawner = gameObject.AddComponent<Spawner>();
+            Spawner = gameObject.AddComponent<EnemySpawner>();
 
             stateMachine = gameObject.AddComponent<StageStateMachine>();
         }

@@ -4,7 +4,7 @@ namespace Assets.Code.Level
 {
     public class StageBootstrapState : IStageState
     {
-        public Spawner _spawner { get; private set; }
+        public EnemySpawner _spawner { get; private set; }
 
         public void Enter()
         {
