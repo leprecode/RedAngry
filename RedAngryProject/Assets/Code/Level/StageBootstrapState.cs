@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Code.Level
 {
     public class StageBootstrapState : IStageState
     {
-        public EnemySpawner _spawner { get; private set; }
+        private List<IStageFactory> _factories;
 
         public void Enter()
         {
@@ -22,6 +23,15 @@ namespace Assets.Code.Level
         public void Update()
         {
             Debug.Log("BootstrapState");
+        }
+
+        private void InitialAllFactories()
+        {
+            _factories = new List<IStageFactory>();
+
+            _factories.Add(new StageMapFactory());
+            _factories.Add(new StagePlayerFactory());
+            _factories.Add(new StageEnemyFactory());
         }
     }
 }

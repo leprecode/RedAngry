@@ -9,7 +9,7 @@ namespace Assets.Code.Level
         private Dictionary<Type, IStageState> _states;
         private IStageState _currentState;
 
-        private void Start()
+        public void Initialize()
         {
             Debug.Log("StateMachineIsStarted");
             InitializeStates();

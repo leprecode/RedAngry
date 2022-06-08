@@ -1,4 +1,6 @@
-﻿namespace Assets.Code.Infrastructure
+﻿using UnityEngine;
+
+namespace Assets.Code.Infrastructure
 {
     public class LoadSceneState : IPayloadedGameState<string>
     {
@@ -6,6 +8,7 @@
         private const string nameOfLoadingScene = "Loading";
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
+        private readonly GameFactory _gameFactory;
 
         public LoadSceneState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
         {
@@ -50,5 +53,7 @@
         public void Exit()
         {
         }
+
+
     }
 } 

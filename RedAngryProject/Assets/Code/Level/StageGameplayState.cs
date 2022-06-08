@@ -20,7 +20,7 @@ namespace Assets.Code.Level
 
             Initialize();
 
-      /*      SpawnWave(_numberWaveToSpawn);*/
+            SpawnWave(_numberWaveToSpawn);
         }
 
         private bool CheckWaveCount()
@@ -34,21 +34,21 @@ namespace Assets.Code.Level
             return false;
         }
 
-/*        private void SpawnWave(int currentWave)
+        private void SpawnWave(int currentWave)
         {
-           *//* _spawner.Spawn(_timeBetweenSpawn,
+            _spawner.Spawn(_timeBetweenSpawn,
             Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesTypes(),
-            Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount());*//*
-*//*
+            Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount());
+
             Debug.Log("StartSpawnNewWave");
 
             GetAllEnemiesCount(currentWave);
 
-        }*/
+        }
 
-/*        private void GetAllEnemiesCount(int _numberWaveToSpawn)
+        private void GetAllEnemiesCount(int _numberWaveToSpawn)
         {
-          *//*  List<int> enemies = Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount();*//*
+            List<int> enemies = Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount();
 
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -56,7 +56,7 @@ namespace Assets.Code.Level
             }
 
             Debug.Log(_currentEnemiesCountInWave + "All enemies");
-        }*/
+        }
 
         public void EnemyDestroyed()
         {
@@ -75,11 +75,11 @@ namespace Assets.Code.Level
 
         public void CheckVictory()
         {
-/*            if (CheckWaveCount())
+            if (CheckWaveCount())
                 SpawnWave(_numberWaveToSpawn);
             else
                 Stage.instance.GetStateMachine.SetVictoryState();
-*/
+
         }
 
         private void Initialize()

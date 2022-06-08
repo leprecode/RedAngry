@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Code.Level
 {
     public class Stage : MonoBehaviour
     {
+        //Убрать монобех
+
         [SerializeField] private StageData stageData;
 
         private StageStateMachine stateMachine;
@@ -22,6 +25,8 @@ namespace Assets.Code.Level
             Spawner = gameObject.AddComponent<EnemySpawner>();
 
             stateMachine = gameObject.AddComponent<StageStateMachine>();
+
+            stateMachine.Initialize();
         }
 
         private void MakeStaticInstacne()
