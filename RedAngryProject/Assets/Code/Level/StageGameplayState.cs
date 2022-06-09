@@ -7,11 +7,14 @@ namespace Assets.Code.Level
 {
     public class StageGameplayState : IStageState
     {
+        //инициализировать список енеми в бутстрап стейте
+
         private int _currentEnemiesCountInWave;
         private const int _timeBetweenSpawn = 1;
         private int _timeBetweenWaves;
         private int _wavesCount;
         private int _numberWaveToSpawn;
+        private List<GameObject> _enemies;
 
         public void Enter()
         {
@@ -20,6 +23,8 @@ namespace Assets.Code.Level
 /*            Initialize();*/
 
         }
+
+        
 
         private bool CheckWaveCount()
         {

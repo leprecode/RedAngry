@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabsOfTypesEnemyWave:
   - {fileID: 2408400359117473918, guid: 521c9a5f52defe14cb5274bc9d2363a1, type: 3}
-  - {fileID: 1837317425425208, guid: 3aec22b5d3f3c2947bb81040b56e5f96, type: 3}
+  - {fileID: 2408400359117473918, guid: 521c9a5f52defe14cb5274bc9d2363a1, type: 3}
   _countForeachTypeOfEnemyWave: 1e0000000f000000

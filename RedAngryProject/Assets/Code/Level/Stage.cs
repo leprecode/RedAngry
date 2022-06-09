@@ -5,8 +5,7 @@ namespace Assets.Code.Level
 {
     public class Stage : MonoBehaviour
     {
-        //Убрать монобех
-
+        //Убрать монобех и инициализировать со стейт машиной всей игры
         [SerializeField] private StageData stageData;
 
         private StageStateMachine stateMachine;
@@ -14,10 +13,13 @@ namespace Assets.Code.Level
         public StageData GetStageData => stageData;
         public StageStateMachine GetStateMachine => stateMachine;
 
+        public List<GameObject> allEnemies { get; private set; }
 
         private void Awake()
         {
             Debug.Log("StageIsAwaked");
+
+            allEnemies = new List<GameObject>();
 
             MakeStaticInstacne();
 
@@ -25,6 +27,8 @@ namespace Assets.Code.Level
 
             stateMachine.Initialize();
         }
+
+        public void SetAllEnemies(List<GameObject> enemies) => allEnemies = enemies;
 
         private void MakeStaticInstacne()
         {

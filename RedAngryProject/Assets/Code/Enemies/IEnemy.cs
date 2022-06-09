@@ -1,7 +1,7 @@
 ﻿using Assets.Code.Enemies;
 using UnityEngine;
 
-public abstract class IEnemy
+public interface IEnemy
 {
     public float health { get; set; }
     public float movementSpeed { get; set; }
@@ -13,12 +13,12 @@ public abstract class IEnemy
     public ParticleSystem onDestroyVFX { get; set; }
 }
 
-public abstract class IMeleeEnemy : IEnemy
+public interface  IMeleeEnemy : IEnemy
 {
-    public float Damage { get; set; }
+
 }
 
-public abstract class IDistantEnemy : IEnemy
+public interface  IDistantEnemy : IEnemy
 {
     public float Damage { get; set; }
 }

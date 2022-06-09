@@ -12,9 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b097b3b46aa90d947b4d14291a371196, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
-  _pauseBetweenWaves: 0
   _waves:
   - {fileID: 11400000, guid: 80e2b791514a7f34f844139ca710e7e3, type: 2}
   - {fileID: 11400000, guid: b525b44d2c2e8474b82d8632af0dd44a, type: 2}
-  _stagePrefab: {fileID: 0}
-  _heroPrefab: {fileID: 0}
+  _stageMapPrefab: {fileID: 5865491374852165885, guid: 2f47b3fcf40cf8a4d9fe3f22ce465cf1,
+    type: 3}
+  _heroPrefab: {fileID: 7380866399585681473, guid: 0a76799e4f76a5648bdef87560569665,
+    type: 3}
+  _heroCanvasPrefab: {fileID: 812049440329312190, guid: 79b45043ae70e0b4da4f17949a960459,
+    type: 3}
+  _heroWeaponPrefab: {fileID: 2289996845966397216, guid: d87fc154464a0b645b75346181736ed9,
+    type: 3}
+  _mainCanvasPrefab: {fileID: 0}
+  _mainCameraPrefab: {fileID: 0}
