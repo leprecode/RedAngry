@@ -9,7 +9,6 @@ namespace Assets.Code.Level
     {
         private int _currentEnemiesCountInWave;
         private const int _timeBetweenSpawn = 1;
-        private EnemySpawner _spawner;
         private int _timeBetweenWaves;
         private int _wavesCount;
         private int _numberWaveToSpawn;
@@ -18,9 +17,8 @@ namespace Assets.Code.Level
         {
             Debug.Log("EnterGameplayState");
 
-            Initialize();
+/*            Initialize();*/
 
-            SpawnWave(_numberWaveToSpawn);
         }
 
         private bool CheckWaveCount()
@@ -34,7 +32,7 @@ namespace Assets.Code.Level
             return false;
         }
 
-        private void SpawnWave(int currentWave)
+/*        private void SpawnWave(int currentWave)
         {
             _spawner.Spawn(_timeBetweenSpawn,
             Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesTypes(),
@@ -44,7 +42,7 @@ namespace Assets.Code.Level
 
             GetAllEnemiesCount(currentWave);
 
-        }
+        }*/
 
         private void GetAllEnemiesCount(int _numberWaveToSpawn)
         {
@@ -58,36 +56,36 @@ namespace Assets.Code.Level
             Debug.Log(_currentEnemiesCountInWave + "All enemies");
         }
 
-        public void EnemyDestroyed()
+/*        public void EnemyDestroyed()
         {
             _currentEnemiesCountInWave--;
 
             CheckCurrentEnemyCount();
-        }
+        }*/
 
-        private void CheckCurrentEnemyCount()
+/*        private void CheckCurrentEnemyCount()
         {
             if (_currentEnemiesCountInWave == 0)
             {
                 CheckVictory();
             }
-        }
+        }*/
 
-        public void CheckVictory()
+/*        public void CheckVictory()
         {
             if (CheckWaveCount())
                 SpawnWave(_numberWaveToSpawn);
             else
                 Stage.instance.GetStateMachine.SetVictoryState();
 
-        }
+        }*/
 
-        private void Initialize()
+/*        private void Initialize()
         {
             _spawner = Stage.instance.Spawner;
             _timeBetweenWaves = Stage.instance.GetStageData.GetWavePause();
             _wavesCount = Stage.instance.GetStageData.GetAllWaves().Count;
-        }
+        }*/
 
         public void Exit()
         {

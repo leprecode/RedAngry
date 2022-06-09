@@ -1,22 +1,20 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Code.Level
 {
     public interface IStageFactory
     {
         void Create();
+        void Initialize();
     }
     public class StageMapFactory : IStageFactory
     {
         public void Create()
         {
+            Debug.Log("StageMapFactory");
         }
-    }
 
-    public class StageEnemyFactory : IStageFactory
-    {
-        public void Create()
+        public void Initialize()
         {
         }
     }
@@ -24,6 +22,11 @@ namespace Assets.Code.Level
     public class StagePlayerFactory : IStageFactory
     {
         public void Create()
+        {
+            Debug.Log("StagePlayerFactory");
+        }
+
+        public void Initialize()
         {
         }
     }

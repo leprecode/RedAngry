@@ -11,7 +11,9 @@ namespace Assets.Code.Level
         {
             Debug.Log("EnterStageBootstrapState");
 
-            Stage.instance.Spawner.Initialize(Stage.instance.GetStageData.GetAllWaves());
+            CreateAllFactories();
+            InitializeAllFactories();
+            StartAllFactories();
 
             Stage.instance.GetStateMachine.SetGameplayState();
         }
@@ -25,13 +27,29 @@ namespace Assets.Code.Level
             Debug.Log("BootstrapState");
         }
 
-        private void InitialAllFactories()
+        private void CreateAllFactories()
         {
             _factories = new List<IStageFactory>();
 
             _factories.Add(new StageMapFactory());
             _factories.Add(new StagePlayerFactory());
             _factories.Add(new StageEnemyFactory());
+        }
+
+        private void StartAllFactories()
+        {
+            for (int i = 0; i < _factories.Count; i++)
+            {
+                _factories[i].Create();
+            }
+        }        
+        
+        private void InitializeAllFactories()
+        {
+            for (int i = 0; i < _factories.Count; i++)
+            {
+                _factories[i].Initialize();
+            }
         }
     }
 }

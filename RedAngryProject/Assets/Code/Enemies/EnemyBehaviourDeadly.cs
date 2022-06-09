@@ -27,7 +27,7 @@ namespace Assets.Code.Enemies
 
         public void Enter()
         {
-            _thisGameObject.GetComponent<Enemy>().stageGameplayState.EnemyDestroyed();
+/*            _thisGameObject.GetComponent<Enemy>().stageGameplayState.EnemyDestroyed();*/
             Die();
         }
 
