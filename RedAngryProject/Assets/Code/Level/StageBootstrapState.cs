@@ -33,7 +33,11 @@ namespace Assets.Code.Level
             _factories = new List<IStageFactory>();
 
             _factories.Add(new StageMapFactory());
-            _factories.Add(new StagePlayerFactory());
+
+            _factories.Add(new StagePlayerFactory(Stage.instance.StageData.HeroPrefab, 
+                Stage.instance.StageData.HeroWeaponPrefab, Stage.instance.StageData.HeroCanvasPrefab,
+                Stage.instance.StageData.MainCameraPrefab));
+
             _factories.Add(new StageEnemyFactory());
         }
 

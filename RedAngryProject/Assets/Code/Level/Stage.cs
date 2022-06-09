@@ -10,7 +10,7 @@ namespace Assets.Code.Level
 
         private StageStateMachine stateMachine;
         public static Stage instance { get; private set; }
-        public StageData GetStageData => stageData;
+        public StageData StageData => stageData;
         public StageStateMachine GetStateMachine => stateMachine;
 
         public List<GameObject> allEnemies { get; private set; }

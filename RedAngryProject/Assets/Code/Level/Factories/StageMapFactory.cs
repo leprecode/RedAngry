@@ -15,7 +15,7 @@ namespace Assets.Code.Level.Factories
 
         public void Initialize()
         {
-            _stageMapPrefab = Stage.instance.GetStageData.StageMapPrefab;
+            _stageMapPrefab = Stage.instance.StageData.StageMapPrefab;
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Assets.Code.Level
 
         private void GetAllEnemiesCount(int _numberWaveToSpawn)
         {
-            List<int> enemies = Stage.instance.GetStageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount();
+            List<int> enemies = Stage.instance.StageData.GetWave(_numberWaveToSpawn).GetWaveEnemiesCount();
 
             for (int i = 0; i < enemies.Count; i++)
             {

@@ -23,5 +23,7 @@ MonoBehaviour:
     type: 3}
   _heroWeaponPrefab: {fileID: 2289996845966397216, guid: d87fc154464a0b645b75346181736ed9,
     type: 3}
-  _mainCanvasPrefab: {fileID: 0}
-  _mainCameraPrefab: {fileID: 0}
+  _mainCanvasPrefab: {fileID: 496313440802057350, guid: 586eda47890d0c549851918e65453e5c,
+    type: 3}
+  _mainCameraPrefab: {fileID: 4486081142685387913, guid: 15aeffd1ebe08ea47b4b6bfad481604f,
+    type: 3}

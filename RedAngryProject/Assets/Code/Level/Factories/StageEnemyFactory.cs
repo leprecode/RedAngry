@@ -14,6 +14,10 @@ namespace Assets.Code.Level.Factories
         private List<GameObject> _allEnemies = new List<GameObject>();
         private List<Wave> _waves;
 
+        public StageEnemyFactory()
+        {
+        }
+
         public void Initialize()
         {
             GetWaves();
@@ -74,11 +78,11 @@ namespace Assets.Code.Level.Factories
         {
             _waves = new List<Wave>();
 
-            int countOfWaves = Stage.instance.GetStageData.GetAllWaves().Count;
+            int countOfWaves = Stage.instance.StageData.GetAllWaves().Count;
 
             for (int i = 0; i < countOfWaves; i++)
             {
-                _waves.Add(Stage.instance.GetStageData.GetWave(i));
+                _waves.Add(Stage.instance.StageData.GetWave(i));
             }
         }
 

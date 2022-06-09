@@ -13,13 +13,13 @@ namespace Assets.Code.Level
         [SerializeField] private GameObject _heroWeaponPrefab;
         [SerializeField] private GameObject _mainCanvasPrefab;
         [SerializeField] private GameObject _mainCameraPrefab;
-        
-        public GameObject StageMapPrefab { get; private set; }
-        public GameObject HeroPrefab { get; private set; }
-        public GameObject HeroCanvasPrefab { get; private set; }
-        public GameObject HeroWeaponPrefab { get; private set; }
-        public GameObject MainCanvasPrefab { get; private set; }
-        public GameObject MainCameraPrefab { get; private set; }
+
+        public GameObject StageMapPrefab => _stageMapPrefab;
+        public GameObject HeroPrefab => _heroPrefab;
+        public GameObject HeroCanvasPrefab => _heroCanvasPrefab;
+        public GameObject HeroWeaponPrefab => _heroWeaponPrefab;
+        public GameObject MainCanvasPrefab => _mainCanvasPrefab;
+        public GameObject MainCameraPrefab => _mainCameraPrefab;
 
         public List<Wave> GetAllWaves() => _waves;
 
