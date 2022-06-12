@@ -1,3 +1,4 @@
+using Assets.Code.Level.AssetManagement;
 using Assets.Code.Level.Factories;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,9 +35,8 @@ namespace Assets.Code.Level
 
             _factories.Add(new StageMapFactory());
 
-            _factories.Add(new StagePlayerFactory(Stage.instance.StageData.HeroPrefab, 
-                Stage.instance.StageData.HeroWeaponPrefab, Stage.instance.StageData.HeroCanvasPrefab,
-                Stage.instance.StageData.MainCameraPrefab));
+            //remove
+            _factories.Add(new StagePlayerFactory(new AssetProvider()));
 
             _factories.Add(new StageEnemyFactory());
         }

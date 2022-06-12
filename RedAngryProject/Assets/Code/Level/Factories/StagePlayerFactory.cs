@@ -1,40 +1,53 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Level.AssetManagement;
+using UnityEngine;
 
 namespace Assets.Code.Level.Factories
 {
     public class StagePlayerFactory : IStageFactory
     {
         private const string tagPlayerSpawnPoint = "PlayerSpawnPoint";
-
-        private readonly GameObject _player;
-        private readonly GameObject _weapon;
-        private readonly GameObject _playerCanvas;
-        private readonly GameObject _mainCamera;
-
         private Transform _spawnPoint;
+        private readonly IAsset _assets;
 
-        public StagePlayerFactory(GameObject player, GameObject weapon, GameObject playerCanvas, GameObject mainCamera)
+        public StagePlayerFactory(IAsset assets)
         {
-            this._player = player;
-            this._weapon = weapon;
-            this._playerCanvas = playerCanvas;
-            this._mainCamera = mainCamera;
+            this._assets = assets;
         }
         public void Initialize()
         {
+            _spawnPoint = GameObject.FindGameObjectWithTag(tagPlayerSpawnPoint).transform;
         }
 
         public void Create()
         {
             Debug.Log("StagePlayerFactory");
 
-            _spawnPoint = GameObject.FindGameObjectWithTag(tagPlayerSpawnPoint).transform;
+            CameraCreate();
+            PlayerCreate(_spawnPoint.position);
+            PlayerWeaponCreate(_spawnPoint.position);
+            PlayerCanvasCreate();
+        }
 
 
-            GameObject player = Object.Instantiate(_player, _spawnPoint.position,Quaternion.identity);
-            Object.Instantiate(_weapon, player.transform.position,Quaternion.identity);
-            Object.Instantiate(_mainCamera, player.transform.position,Quaternion.identity);
-            Object.Instantiate(_playerCanvas, player.transform.position,Quaternion.identity);
+        private void PlayerCreate(Vector3 at)
+        {
+            _assets.Instantiate(AssetsPath.PlayerPath, at);
+        }        
+        private void CameraCreate()
+        {
+            _assets.Instantiate(AssetsPath.MainCameraPath);
+        }
+        private void MainCanvasCreate()
+        {
+            _assets.Instantiate(AssetsPath.MainCanvasPath);
+        }
+        private void PlayerCanvasCreate()
+        {
+            _assets.Instantiate(AssetsPath.PlayerCanvasPath);
+        }
+        private void PlayerWeaponCreate(Vector3 at)
+        {
+            _assets.Instantiate(AssetsPath.PlayerCanvasPath, at);
         }
     }
 }

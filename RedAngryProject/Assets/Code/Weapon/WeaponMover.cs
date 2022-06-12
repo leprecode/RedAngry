@@ -9,9 +9,10 @@ namespace Assets.Code.Weapon
     {
         private Transform _target;
 
-        private void Start()
+        private void OnEnable()
         {
             _target = GameObject.FindGameObjectWithTag("Player").transform;
+
         }
 
         private void LateUpdate()

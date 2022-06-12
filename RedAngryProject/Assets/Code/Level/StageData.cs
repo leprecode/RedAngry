@@ -8,21 +8,9 @@ namespace Assets.Code.Level
     {
         [SerializeField] private List<Wave> _waves = new List<Wave>();
         [SerializeField] private GameObject _stageMapPrefab;
-        [SerializeField] private GameObject _heroPrefab;
-        [SerializeField] private GameObject _heroCanvasPrefab;
-        [SerializeField] private GameObject _heroWeaponPrefab;
-        [SerializeField] private GameObject _mainCanvasPrefab;
-        [SerializeField] private GameObject _mainCameraPrefab;
-
-        public GameObject StageMapPrefab => _stageMapPrefab;
-        public GameObject HeroPrefab => _heroPrefab;
-        public GameObject HeroCanvasPrefab => _heroCanvasPrefab;
-        public GameObject HeroWeaponPrefab => _heroWeaponPrefab;
-        public GameObject MainCanvasPrefab => _mainCanvasPrefab;
-        public GameObject MainCameraPrefab => _mainCameraPrefab;
 
         public List<Wave> GetAllWaves() => _waves;
-
+        public GameObject StageMapPrefab => _stageMapPrefab;
         public Wave GetWave(int numberOfWave)
         {
             if (numberOfWave < _waves.Count)

@@ -19,6 +19,13 @@ namespace Assets.Code.Infrastructure
         {
             Debug.Log("Bootsrap enter!");
             _sceneLoader.Load(LoadingSceneName,EnterLoadLevel);
+            RegisterServices();
+        }
+
+        private void RegisterServices()
+        {
+            /*AllServices.Container.Register< */
+
         }
 
         private void EnterLoadLevel() => 
