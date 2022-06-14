@@ -1,4 +1,5 @@
 ﻿using Assets.Code.Infrastructure.Services;
+using Assets.Code.Infrastructure.Services.Progress;
 using System;
 using UnityEngine;
 
@@ -29,7 +30,7 @@ namespace Assets.Code.Infrastructure
 
         private void RegisterServices()
         {
-        
+            _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
 
         }
 

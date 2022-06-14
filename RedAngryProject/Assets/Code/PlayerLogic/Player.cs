@@ -1,9 +1,11 @@
+using Assets.Code.Data;
 using Assets.Code.Enemies;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Code.PlayerLogic
 {
-    public class Player : MonoBehaviour, IDamagable
+    public class Player : MonoBehaviour, IDamagable, ISaveProgress
     {
         [SerializeField] private float _health;
 
@@ -24,5 +26,32 @@ namespace Assets.Code.PlayerLogic
         {
             Destroy(gameObject);
         }
+
+        public void LoadProgress(PlayerProgress progress)
+        {
+            if (SceneManager.GetActiveScene().name == progress.WorldData.PositionOnLevel.Level)
+            {
+                var savedPosition = progress.WorldData.PositionOnLevel.Position;
+
+                if (savedPosition != null)
+                    Warp(savedPosition);
+            }
+        }
+
+        private void Warp(Vector3Data to)
+        {
+            var CharacterController = GetComponent<CharacterController>();
+            CharacterController.enabled = false;
+            transform.position = to.AsUnityVector();
+            CharacterController.enabled = true;
+        }
+
+        public void UpdateProgress(PlayerProgress progress)
+        {
+            progress.WorldData.PositionOnLevel =
+                new PositionOnLevel(CurrentLevel(), transform.position.AsVector3Data());
+        }
+
+        private static string CurrentLevel() => SceneManager.GetActiveScene().name;
     }
-}
+} 
