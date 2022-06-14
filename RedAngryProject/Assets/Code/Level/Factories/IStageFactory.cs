@@ -1,6 +1,8 @@
-﻿namespace Assets.Code.Level.Factories
+﻿using Assets.Code.Infrastructure.Services;
+
+namespace Assets.Code.Level.Factories
 {
-    public interface IStageFactory
+    public interface IStageFactory : IService
     {
         void Create();
         void Initialize();

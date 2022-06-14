@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Infrastructure.Services;
+using UnityEngine;
 
 namespace Assets.Code.Level.Factories
 {
-    public class StageMapFactory : IStageFactory
+    public class StageMapFactory : IStageFactory, IService
     {
         private GameObject _stageMapPrefab;
 

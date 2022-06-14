@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Code.Infrastructure.Services;
+using System;
 using System.Collections.Generic;
 
 namespace Assets.Code.Infrastructure
@@ -8,11 +9,11 @@ namespace Assets.Code.Infrastructure
         private readonly Dictionary<Type, IExitableGameState> _states;
         private IExitableGameState _activeState;
 
-        public GameStateMachine(SceneLoader sceneLoader)
+        public GameStateMachine(SceneLoader sceneLoader, AllServices services)
         {
             _states = new Dictionary<Type, IExitableGameState>
             {
-                [typeof(GameBootstrapState)] = new GameBootstrapState(this, sceneLoader),
+                [typeof(GameBootstrapState)] = new GameBootstrapState(this, sceneLoader, services),
                 [typeof(LoadSceneState)] = new LoadSceneState(this, sceneLoader),
                 [typeof(InGameState)] = new InGameState(this, sceneLoader),
                 [typeof(InMainMenuState)] = new InMainMenuState(this, sceneLoader),

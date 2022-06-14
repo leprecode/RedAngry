@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Code.Infrastructure.Services;
+using UnityEngine;
 
 namespace Assets.Code.Infrastructure
 {
@@ -8,7 +9,7 @@ namespace Assets.Code.Infrastructure
 
         public Game(ICoroutineRunner coroutineRunner)
         {
-            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner));
+            StateMachine = new GameStateMachine(new SceneLoader(coroutineRunner), AllServices.Container);
         }
     }
 }

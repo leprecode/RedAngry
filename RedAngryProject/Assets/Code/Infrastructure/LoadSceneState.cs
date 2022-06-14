@@ -8,7 +8,7 @@ namespace Assets.Code.Infrastructure
         private const string nameOfLoadingScene = "Loading";
         private readonly GameStateMachine _gameStateMachine;
         private readonly SceneLoader _sceneLoader;
-        private readonly GameFactory _gameFactory;
+        //private readonly GameFactory _gameFactory;
 
         public LoadSceneState(GameStateMachine gameStateMachine, SceneLoader sceneLoader)
         {
