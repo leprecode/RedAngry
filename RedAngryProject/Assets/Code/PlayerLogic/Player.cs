@@ -29,9 +29,9 @@ namespace Assets.Code.PlayerLogic
 
         public void LoadProgress(PlayerProgress progress)
         {
-            if (SceneManager.GetActiveScene().name == progress.WorldData.PositionOnLevel.Level)
+            if (SceneManager.GetActiveScene().name == progress.worldData.PositionOnLevel.Level)
             {
-                var savedPosition = progress.WorldData.PositionOnLevel.Position;
+                var savedPosition = progress.worldData.PositionOnLevel.Position;
 
                 if (savedPosition != null)
                     Warp(savedPosition);
@@ -48,7 +48,7 @@ namespace Assets.Code.PlayerLogic
 
         public void UpdateProgress(PlayerProgress progress)
         {
-            progress.WorldData.PositionOnLevel =
+            progress.worldData.PositionOnLevel =
                 new PositionOnLevel(CurrentLevel(), transform.position.AsVector3Data());
         }
 

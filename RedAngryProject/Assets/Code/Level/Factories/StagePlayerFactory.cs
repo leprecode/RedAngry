@@ -15,11 +15,13 @@ namespace Assets.Code.Level.Factories
         }
         public void Initialize()
         {
-            _spawnPoint = GameObject.FindGameObjectWithTag(tagPlayerSpawnPoint).transform;
+            
         }
 
         public void Create()
         {
+            _spawnPoint = GameObject.FindGameObjectWithTag(tagPlayerSpawnPoint).transform;
+
             Debug.Log("StagePlayerFactory");
 
             CameraCreate();

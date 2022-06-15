@@ -4,6 +4,6 @@ namespace Assets.Code.Infrastructure.Services.Progress
 {
     public interface IPersistentProgressService : IService
     {
-        PlayerProgress Progress { get; set; }
+        public PlayerProgress Progress { get; set; }
     }
 }
