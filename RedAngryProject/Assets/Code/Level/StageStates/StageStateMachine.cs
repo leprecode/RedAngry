@@ -28,8 +28,8 @@ namespace Assets.Code.Level
 
             _states = new Dictionary<Type, IStageState>();
 
-            _states[typeof(StageBootstrapState)] = new StageBootstrapState();
-            _states[typeof(StageGameplayState)] = new StageGameplayState();
+            _states[typeof(StageBootstrapState)] = new StageBootstrapState(this);
+            _states[typeof(StageGameplayState)] = new StageGameplayState(this);
             _states[typeof(StageEndGameOverState)] = new StageEndGameOverState();
             _states[typeof(StageVictoryState)] = new StageVictoryState();
         }
@@ -43,7 +43,7 @@ namespace Assets.Code.Level
             _currentState.Enter();
         }
 
-        public IStageState GetState<T>() where T : IStageState
+        private IStageState GetState<T>() where T : IStageState
         {
             var type = typeof(T);
             return _states[type];
@@ -69,6 +69,12 @@ namespace Assets.Code.Level
         {
             var state = GetState<StageVictoryState>();
             SetState(state);
+        }
+
+        public StageBootstrapState GetStageBootstrapState()
+        {
+            var state = GetState<StageBootstrapState>();
+            return (StageBootstrapState)state;
         }
     }
 }

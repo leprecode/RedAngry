@@ -31,7 +31,6 @@ namespace Assets.Code.Infrastructure.GameStates
         private void RegisterServices()
         {
             _services.RegisterSingle<IPersistentProgressService>(new PersistentProgressService());
-
         }
 
         private void EnterLoadLevel() => 

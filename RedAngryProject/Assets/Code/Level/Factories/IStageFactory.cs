@@ -2,7 +2,7 @@
 
 namespace Assets.Code.Level.Factories
 {
-    public interface IStageFactory : IService
+    public interface IStageFactory
     {
         void Create();
         void Initialize();

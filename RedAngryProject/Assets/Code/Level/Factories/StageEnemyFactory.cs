@@ -11,8 +11,10 @@ namespace Assets.Code.Level.Factories
         private int _currentSpawnPoint = 0;
 
         private List<Transform> _pointsToSpawn;
-        private List<GameObject> _allEnemies = new List<GameObject>();
+        private List<GameObject> _allEnemies = new List<GameObject>(); 
         private List<Wave> _waves;
+
+        public List<GameObject> AllEnemies {get => _allEnemies;}
 
         public StageEnemyFactory()
         {

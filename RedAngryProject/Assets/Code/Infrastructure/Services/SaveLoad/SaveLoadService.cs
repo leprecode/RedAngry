@@ -6,7 +6,7 @@ namespace Assets.Code.Infrastructure.Services.SaveLoad
     {
         public PlayerProgress LoadProgress()
         {
-
+            return null;
         }
 
 

@@ -1,5 +1,6 @@
 using Assets.Code.Level.AssetManagement;
 using Assets.Code.Level.Factories;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,7 +8,13 @@ namespace Assets.Code.Level.StageStates
 {
     public class StageBootstrapState : IStageState
     {
-        private List<IStageFactory> _factories;
+        private Dictionary<Type,IStageFactory> _factories;
+        private readonly StageStateMachine _stageStateMachine;
+
+        public StageBootstrapState(StageStateMachine stageStateMachine)
+        {
+            this._stageStateMachine = stageStateMachine;
+        }
 
         public void Enter()
         {
@@ -17,7 +24,7 @@ namespace Assets.Code.Level.StageStates
             InitializeAllFactories();
             StartAllFactories();
 
-            Stage.instance.GetStateMachine.SetGameplayState();
+            _stageStateMachine.SetGameplayState();
         }
 
         public void Exit()
@@ -29,31 +36,34 @@ namespace Assets.Code.Level.StageStates
             Debug.Log("BootstrapState");
         }
 
+        public IStageFactory GetFactory<TFactory>() where TFactory : IStageFactory
+        {
+            var factory = typeof(TFactory);
+            return _factories[factory];
+        }
+
         private void CreateAllFactories()
         {
-            _factories = new List<IStageFactory>();
+            _factories = new Dictionary<Type, IStageFactory>();
 
-            _factories.Add(new StageMapFactory());
-
-            //remove
-            _factories.Add(new StagePlayerFactory(new AssetProvider()));
-
-            _factories.Add(new StageEnemyFactory());
+            _factories[typeof(StageMapFactory)] = new StageMapFactory();
+            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(new AssetProvider());
+            _factories[typeof(StageEnemyFactory)] = new StageEnemyFactory();
         }
 
         private void StartAllFactories()
         {
-            for (int i = 0; i < _factories.Count; i++)
+            foreach (var factory in _factories)
             {
-                _factories[i].Create();
+                factory.Value.Create();
             }
         }
 
         private void InitializeAllFactories()
         {
-            for (int i = 0; i < _factories.Count; i++)
+            foreach (var factory in _factories)
             {
-                _factories[i].Initialize();
+                factory.Value.Initialize();
             }
         }
     }
