@@ -30,8 +30,8 @@ namespace Assets.Code.Level
 
             _states[typeof(StageBootstrapState)] = new StageBootstrapState(this);
             _states[typeof(StageGameplayState)] = new StageGameplayState(this);
-            _states[typeof(StageEndGameOverState)] = new StageEndGameOverState();
-            _states[typeof(StageVictoryState)] = new StageVictoryState();
+            _states[typeof(StageGameOverState)] = new StageGameOverState(this);
+            _states[typeof(StageVictoryState)] = new StageVictoryState(this);
         }
 
         private void SetState(IStageState newState)

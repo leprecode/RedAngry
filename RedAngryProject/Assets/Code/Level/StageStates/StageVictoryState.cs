@@ -5,6 +5,13 @@ namespace Assets.Code.Level
 {
     public class StageVictoryState : IStageState
     {
+        private readonly StageStateMachine _stageStateMachine;
+
+        public StageVictoryState(StageStateMachine stageStateMachine)
+        {
+            this._stageStateMachine = stageStateMachine;
+        }
+
         public void Enter()
         {
             Debug.Log("Victory State");
@@ -12,12 +19,10 @@ namespace Assets.Code.Level
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Update()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

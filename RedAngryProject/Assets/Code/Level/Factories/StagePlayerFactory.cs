@@ -1,4 +1,4 @@
-﻿using Assets.Code.Level.AssetManagement;
+﻿using Assets.Code.Level;
 using UnityEngine;
 
 namespace Assets.Code.Level.Factories
@@ -7,15 +7,10 @@ namespace Assets.Code.Level.Factories
     {
         private const string tagPlayerSpawnPoint = "PlayerSpawnPoint";
         private Transform _spawnPoint;
-        private readonly IAsset _assets;
+        public GameObject player { get; private set; }
 
-        public StagePlayerFactory(IAsset assets)
+        public StagePlayerFactory()
         {
-            this._assets = assets;
-        }
-        public void Initialize()
-        {
-            
         }
 
         public void Create()
@@ -33,7 +28,7 @@ namespace Assets.Code.Level.Factories
 
         private void PlayerCreate(Vector3 at)
         {
-            _assets.Instantiate(AssetsPath.PlayerPath, at);
+            player = _assets.Instantiate(AssetsPath.PlayerPath, at);
         }        
         private void CameraCreate()
         {

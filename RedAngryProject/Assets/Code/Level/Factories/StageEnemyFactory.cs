@@ -8,33 +8,32 @@ namespace Assets.Code.Level.Factories
     public class StageEnemyFactory : IStageFactory
     {
         private const string _tagToSearch = "SpawnPoints";
-        private int _currentSpawnPoint = 0;
 
-        private List<Transform> _pointsToSpawn;
-        private List<GameObject> _allEnemies = new List<GameObject>(); 
-        private List<Wave> _waves;
+        private readonly List<Transform> _pointsToSpawn;
+        private readonly List<Wave> _waves;
+
+        private List<GameObject> _allEnemies;
+        private int _currentSpawnPoint = 0;
 
         public List<GameObject> AllEnemies {get => _allEnemies;}
 
-        public StageEnemyFactory()
+        public StageEnemyFactory(List<Transform> pointsToSpawn, List<Wave> waves)
         {
-        }
+            _pointsToSpawn = pointsToSpawn;
+            _waves = waves;
 
-        public void Initialize()
-        {
-            GetWaves();
         }
 
         public void Create()
         {
             Debug.Log("StageEnemyFactory");
-
-            GetSpawnPoints();
             CreateEnemies();
         }
 
         private void CreateEnemies()
         {
+            _allEnemies = new List<GameObject>();
+
             for (int wave = 0; wave < _waves.Count; wave++)
             {
                 InstantiateEmptyObjectForWave(wave);
@@ -73,30 +72,6 @@ namespace Assets.Code.Level.Factories
             for (int i = 0; i < _pointsToSpawn.Count; i++)
             {
                 GameObject.Instantiate(newEmptyObject, _pointsToSpawn[i]);
-            }
-        }
-
-        private void GetWaves()
-        {
-            _waves = new List<Wave>();
-
-            int countOfWaves = Stage.instance.StageData.GetAllWaves().Count;
-
-            for (int i = 0; i < countOfWaves; i++)
-            {
-                _waves.Add(Stage.instance.StageData.GetWave(i));
-            }
-        }
-
-        private void GetSpawnPoints()
-        {
-            _pointsToSpawn = new List<Transform>();
-
-            GameObject parentOfSpawnPoints = GameObject.FindGameObjectWithTag(_tagToSearch);
-
-            for (int i = 0; i < parentOfSpawnPoints.transform.childCount; i++)
-            {
-                _pointsToSpawn.Add(parentOfSpawnPoints.transform.GetChild(i));
             }
         }
 

@@ -10,7 +10,9 @@ namespace Assets.Code.Level
     public class StageGameplayState : IStageState
     {
         private readonly StageStateMachine _stageStateMachine;
-        private List<GameObject> _allEnemies;
+        
+        private EnemyWatcher _enemyWatcher;
+        private PlayerWatcher _playerWatcher;
 
         public StageGameplayState(StageStateMachine stageStateMachine)
         {
@@ -21,7 +23,14 @@ namespace Assets.Code.Level
         {
             Debug.Log("EnterGameplayState");
 
-            GetAllEnemies();
+            InitialWatchers();
+        }
+
+        private GameObject GetPlayer()
+        {
+            var factory = (StagePlayerFactory)_stageStateMachine.GetStageBootstrapState().GetFactory<StagePlayerFactory>();
+            var player = factory.player;
+            return player;
         }
 
         public void Exit()
@@ -33,11 +42,19 @@ namespace Assets.Code.Level
             Debug.Log("StageGameplayState");
         }
 
-        private void GetAllEnemies()
+        private List<GameObject> GetAllEnemies()
         {
-            _allEnemies = new List<GameObject>();
+            var allEnemies = new List<GameObject>();
             var enemyFactory = (StageEnemyFactory)_stageStateMachine.GetStageBootstrapState().GetFactory<StageEnemyFactory>();
-            _allEnemies = enemyFactory.AllEnemies;
+            
+            allEnemies = enemyFactory.AllEnemies;
+            return allEnemies;
+        }
+
+        private void InitialWatchers()
+        {
+            _enemyWatcher = new EnemyWatcher(GetAllEnemies());
+            _playerWatcher = new PlayerWatcher(GetPlayer());
         }
     }
 }
@@ -49,6 +66,13 @@ public interface IWatcher
 
 public class EnemyWatcher : IWatcher
 {
+    private readonly List<GameObject> _allEnemies;
+
+    public EnemyWatcher(List<GameObject> allEnemies)
+    {
+        this._allEnemies = allEnemies;
+    }
+
     public void Watch()
     {
     }
@@ -56,6 +80,13 @@ public class EnemyWatcher : IWatcher
 
 public class PlayerWatcher : IWatcher
 {
+    private readonly GameObject _player;
+
+    public PlayerWatcher(GameObject player)
+    {
+        this._player = player;
+    }
+
     public void Watch()
     {
     }

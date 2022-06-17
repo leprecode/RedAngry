@@ -5,18 +5,18 @@ namespace Assets.Code.Level.Factories
 {
     public class StageMapFactory : IStageFactory, IService
     {
-        private GameObject _stageMapPrefab;
+        private readonly GameObject _stageMapPrefab;
 
-        public void Create()
+        public StageMapFactory(GameObject stageMapPrefab)
         {
-            Debug.Log("StageMapFactory");
+            _stageMapPrefab = stageMapPrefab;
 
             Object.Instantiate(_stageMapPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
 
-        public void Initialize()
+        public void Create()
         {
-            _stageMapPrefab = Stage.instance.StageData.StageMapPrefab;
+            Debug.Log("StageMapFactory");
         }
     }
 }

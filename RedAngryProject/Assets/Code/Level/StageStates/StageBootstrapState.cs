@@ -1,4 +1,3 @@
-using Assets.Code.Level.AssetManagement;
 using Assets.Code.Level.Factories;
 using System;
 using System.Collections.Generic;
@@ -8,6 +7,7 @@ namespace Assets.Code.Level.StageStates
 {
     public class StageBootstrapState : IStageState
     {
+        private const string _tagToSearchParentOfSpawnPoints = "SpawnPoints";
         private Dictionary<Type,IStageFactory> _factories;
         private readonly StageStateMachine _stageStateMachine;
 
@@ -21,7 +21,6 @@ namespace Assets.Code.Level.StageStates
             Debug.Log("EnterStageBootstrapState");
 
             CreateAllFactories();
-            InitializeAllFactories();
             StartAllFactories();
 
             _stageStateMachine.SetGameplayState();
@@ -46,9 +45,41 @@ namespace Assets.Code.Level.StageStates
         {
             _factories = new Dictionary<Type, IStageFactory>();
 
-            _factories[typeof(StageMapFactory)] = new StageMapFactory();
+            CreateMapFactory();
+            CreatePlayerFactory();
+            CreateEnemyFactory();
+        }
+
+        private void CreateEnemyFactory()
+        {
+            var pointsToSpawn = GetSpawnPoints();
+            var waves = GetWaves();
+
+            _factories[typeof(StageEnemyFactory)] = new StageEnemyFactory(pointsToSpawn, waves);
+        }
+
+        private List<Transform> GetSpawnPoints()
+        {
+            var parentOfSpawnPoints = GameObject.FindGameObjectWithTag(_tagToSearchParentOfSpawnPoints);
+            List<Transform> _pointsToSpawn = new List<Transform>();
+
+            for (int i = 0; i < parentOfSpawnPoints.transform.childCount; i++)
+            {
+                _pointsToSpawn.Add(parentOfSpawnPoints.transform.GetChild(i));
+            }
+
+            return _pointsToSpawn;
+        }
+
+        private void CreatePlayerFactory()
+        {
             _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(new AssetProvider());
-            _factories[typeof(StageEnemyFactory)] = new StageEnemyFactory();
+        }
+
+        private void CreateMapFactory()
+        {
+            var stagePrefab = Stage.instance.StageData.StageMapPrefab;
+            _factories[typeof(StageMapFactory)] = new StageMapFactory(stagePrefab);
         }
 
         private void StartAllFactories()
@@ -58,13 +89,18 @@ namespace Assets.Code.Level.StageStates
                 factory.Value.Create();
             }
         }
-
-        private void InitializeAllFactories()
+        private List<Wave> GetWaves()
         {
-            foreach (var factory in _factories)
+            List<Wave> waves = new List<Wave>();
+
+            int countOfWaves = Stage.instance.StageData.GetAllWaves().Count;
+
+            for (int i = 0; i < countOfWaves; i++)
             {
-                factory.Value.Initialize();
+                waves.Add(Stage.instance.StageData.GetWave(i));
             }
+
+            return waves;
         }
     }
 }
