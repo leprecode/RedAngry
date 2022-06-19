@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b097b3b46aa90d947b4d14291a371196, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   _waves:
   - {fileID: 11400000, guid: 80e2b791514a7f34f844139ca710e7e3, type: 2}
   - {fileID: 11400000, guid: b525b44d2c2e8474b82d8632af0dd44a, type: 2}

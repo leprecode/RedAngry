@@ -1,4 +1,5 @@
 using Assets.Code.Enemies;
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +8,10 @@ namespace Assets.Code.Level
 {
     [CreateAssetMenu(fileName = "Wave", menuName = "ScriptableObjects/WaveDataScriptableObject", order = 2)]
 
-    public class Wave : ScriptableObject
+    public class Wave : SerializedScriptableObject
     {
-        [SerializeField] private List<GameObject> _prefabsOfTypesEnemyWave = new List<GameObject>();
-        [SerializeField] private List<int> _countForeachTypeOfEnemyWave = new List<int>();
+        [SerializeField] private Dictionary<GameObject, int> _enemies = new Dictionary<GameObject, int>();
 
-        public List<GameObject> GetWaveEnemiesTypes() => _prefabsOfTypesEnemyWave;
-
-        public List<int> GetWaveEnemiesCount() => _countForeachTypeOfEnemyWave;
-
+        public Dictionary<GameObject, int> Enemies => _enemies;
     }
 }

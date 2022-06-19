@@ -1,10 +1,11 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Code.Level
 {
     [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/StageDataScriptableObject", order = 1)]
-    public class StageData : ScriptableObject
+    public class StageData : SerializedScriptableObject
     {
         [SerializeField] private List<Wave> _waves = new List<Wave>();
         [SerializeField] private GameObject _stageMapPrefab;
@@ -12,7 +13,6 @@ namespace Assets.Code.Level
         [SerializeField] private GameObject _mainCanvasPrefab;
         [SerializeField] private GameObject _playerWeaponPrefab;
         [SerializeField] private GameObject _cameraPrefab;
-
         public List<Wave> GetAllWaves() => _waves;
         public GameObject StageMapPrefab => _stageMapPrefab;
 

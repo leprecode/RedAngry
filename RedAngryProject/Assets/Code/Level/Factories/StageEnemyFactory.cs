@@ -15,7 +15,7 @@ namespace Assets.Code.Level.Factories
         private List<GameObject> _allEnemies;
         private int _currentSpawnPoint = 0;
 
-        public List<GameObject> AllEnemies {get => _allEnemies;}
+        public List<GameObject> AllEnemies { get => _allEnemies; }
 
         public StageEnemyFactory(List<Transform> pointsToSpawn, List<Wave> waves)
         {
@@ -33,23 +33,31 @@ namespace Assets.Code.Level.Factories
         private void CreateEnemies()
         {
             _allEnemies = new List<GameObject>();
+            Dictionary<GameObject, int> enemies = new Dictionary<GameObject, int>();
 
             for (int wave = 0; wave < _waves.Count; wave++)
             {
                 InstantiateEmptyObjectForWave(wave);
-
-                for (int enemyType = 0; enemyType < _waves[wave].GetWaveEnemiesTypes().Count; enemyType++)
-                {
-                    for (int countEnemyOfType = 0; countEnemyOfType < _waves[wave].GetWaveEnemiesCount()[enemyType]; countEnemyOfType++)
-                    {
-                        GameObject newEnemy = GameObject.Instantiate(_waves[wave].GetWaveEnemiesTypes()[enemyType],
-                             _pointsToSpawn[NextSpawnPoint()].GetChild(wave));
-
-                        _allEnemies.Add(newEnemy);
-                        DisableEnemy(newEnemy);
-                    }
-                }
             }
+
+
+            /*
+                        for (int wave = 0; wave < _waves.Count; wave++)
+                        {
+                            InstantiateEmptyObjectForWave(wave);
+
+                            for (int enemyType = 0; enemyType < _waves[wave].GetWaveEnemiesTypes().Count; enemyType++)
+                            {
+                                for (int countEnemyOfType = 0; countEnemyOfType < _waves[wave].GetWaveEnemiesCount()[enemyType]; countEnemyOfType++)
+                                {
+                                    GameObject newEnemy = GameObject.Instantiate(_waves[wave].GetWaveEnemiesTypes()[enemyType],
+                                         _pointsToSpawn[NextSpawnPoint()].GetChild(wave));
+
+                                    _allEnemies.Add(newEnemy);
+                                    DisableEnemy(newEnemy);
+                                }
+                            }
+                        }*/
 
             SendAllEnemiesToStage();
         }
