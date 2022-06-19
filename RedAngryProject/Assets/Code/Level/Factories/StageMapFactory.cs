@@ -11,6 +11,11 @@ namespace Assets.Code.Level.Factories
         {
             _stageMapPrefab = stageMapPrefab;
 
+            CreateMap();
+        }
+
+        private void CreateMap()
+        {
             Object.Instantiate(_stageMapPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         }
 

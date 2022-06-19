@@ -62,7 +62,7 @@ namespace Assets.Code.Level
         }
         public void SetGameOverState()
         {
-            var state = GetState<StageEndGameOverState>();
+            var state = GetState<StageGameOverState>();
             SetState(state);
         }
         public void SetVictoryState()

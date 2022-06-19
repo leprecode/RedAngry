@@ -1,16 +1,17 @@
-﻿using Assets.Code.Level;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Code.Level.Factories
 {
     public class StagePlayerFactory : IStageFactory
     {
         private const string tagPlayerSpawnPoint = "PlayerSpawnPoint";
+        private readonly StageData _stageData;
         private Transform _spawnPoint;
         public GameObject player { get; private set; }
 
-        public StagePlayerFactory()
+        public StagePlayerFactory(StageData stageData)
         {
+            this._stageData = stageData;
         }
 
         public void Create()
@@ -25,26 +26,25 @@ namespace Assets.Code.Level.Factories
             PlayerCanvasCreate();
         }
 
-
-        private void PlayerCreate(Vector3 at)
-        {
-            player = _assets.Instantiate(AssetsPath.PlayerPath, at);
-        }        
-        private void CameraCreate()
-        {
-            _assets.Instantiate(AssetsPath.MainCameraPath);
-        }
-        private void MainCanvasCreate()
-        {
-            _assets.Instantiate(AssetsPath.MainCanvasPath);
-        }
         private void PlayerCanvasCreate()
         {
-            _assets.Instantiate(AssetsPath.PlayerCanvasPath);
+            Object.Instantiate(_stageData.MainCanvasPrefab);
         }
-        private void PlayerWeaponCreate(Vector3 at)
+
+        private void PlayerWeaponCreate(Vector3 position)
         {
-            _assets.Instantiate(AssetsPath.PlayerCanvasPath, at);
+            Object.Instantiate(_stageData.PlayerWeaponPrefab, position, Quaternion.identity);
+
+        }
+
+        private void PlayerCreate(Vector3 position)
+        {
+            Object.Instantiate(_stageData.PlayerPrefab, position, Quaternion.identity);
+        }
+
+        private void CameraCreate()
+        {
+            Object.Instantiate(_stageData.CameraPrefab);
         }
     }
 }

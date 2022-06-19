@@ -73,7 +73,7 @@ namespace Assets.Code.Level.StageStates
 
         private void CreatePlayerFactory()
         {
-            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(new AssetProvider());
+            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(Stage.instance.StageData);
         }
 
         private void CreateMapFactory()
