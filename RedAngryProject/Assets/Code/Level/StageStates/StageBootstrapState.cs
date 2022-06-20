@@ -73,12 +73,12 @@ namespace Assets.Code.Level.StageStates
 
         private void CreatePlayerFactory()
         {
-            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(Stage.instance.StageData);
+            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(StageEntryPoint.instance.StageData);
         }
 
         private void CreateMapFactory()
         {
-            var stagePrefab = Stage.instance.StageData.StageMapPrefab;
+            var stagePrefab = StageEntryPoint.instance.StageData.StageMapPrefab;
             _factories[typeof(StageMapFactory)] = new StageMapFactory(stagePrefab);
         }
 
@@ -93,11 +93,11 @@ namespace Assets.Code.Level.StageStates
         {
             List<Wave> waves = new List<Wave>();
 
-            int countOfWaves = Stage.instance.StageData.GetAllWaves().Count;
+            int countOfWaves = StageEntryPoint.instance.StageData.GetAllWaves().Count;
 
             for (int i = 0; i < countOfWaves; i++)
             {
-                waves.Add(Stage.instance.StageData.GetWave(i));
+                waves.Add(StageEntryPoint.instance.StageData.GetWave(i));
             }
 
             return waves;

@@ -63,7 +63,7 @@ namespace Assets.Code.Level.Factories
 
         private void SendAllEnemiesToStage()
         {
-            Stage.instance.SetAllEnemies(_allEnemies);
+            StageEntryPoint.instance.SetAllEnemies(_allEnemies);
         }
 
         private void InstantiateEmptyObjectForWave(int numberOfWave)

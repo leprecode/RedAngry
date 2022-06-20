@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Code.Level
 {
-    public class StageStateMachine : MonoBehaviour
+    public class StageStateMachine
     {
         private Dictionary<Type, IStageState> _states;
         private IStageState _currentState;
