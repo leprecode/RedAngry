@@ -7,15 +7,12 @@ namespace Assets.Code.Level.Factories
 {
     public class StageEnemyFactory : IStageFactory
     {
-        private const string _tagToSearch = "SpawnPoints";
+        public List<GameObject> allEnemies { get; private set; }
 
+        private const string _tagToSearch = "SpawnPoints";
         private readonly List<Transform> _pointsToSpawn;
         private readonly List<Wave> _waves;
-
-        private List<GameObject> _allEnemies;
         private int _currentSpawnPoint = 0;
-
-        public List<GameObject> AllEnemies { get => _allEnemies; }
 
         public StageEnemyFactory(List<Transform> pointsToSpawn, List<Wave> waves)
         {
@@ -32,7 +29,7 @@ namespace Assets.Code.Level.Factories
 
         private void CreateEnemies()
         {
-            _allEnemies = new List<GameObject>();
+            allEnemies = new List<GameObject>();
             Dictionary<GameObject, int> enemies = new Dictionary<GameObject, int>();
 
             for (int wave = 0; wave < _waves.Count; wave++)
@@ -47,23 +44,17 @@ namespace Assets.Code.Level.Factories
                         GameObject newEnemy = GameObject.Instantiate(enemyKey,
                                         _pointsToSpawn[NextSpawnPoint()].GetChild(wave));
 
-                        _allEnemies.Add(newEnemy);
+                        allEnemies.Add(newEnemy);
                         DisableEnemy(newEnemy);
                     }
                 }
             }
 
-            SendAllEnemiesToStage();
         }
 
         private void DisableEnemy(GameObject newEnemy)
         {
             newEnemy.SetActive(false);
-        }
-
-        private void SendAllEnemiesToStage()
-        {
-            StageEntryPoint.instance.SetAllEnemies(_allEnemies);
         }
 
         private void InstantiateEmptyObjectForWave(int numberOfWave)

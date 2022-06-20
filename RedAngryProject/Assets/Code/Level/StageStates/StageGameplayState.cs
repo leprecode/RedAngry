@@ -10,27 +10,24 @@ namespace Assets.Code.Level
     public class StageGameplayState : IStageState
     {
         private readonly StageStateMachine _stageStateMachine;
-        
+        private readonly WaveSpawner _waveSpawner;
         private EnemyWatcher _enemyWatcher;
         private PlayerWatcher _playerWatcher;
 
-        public StageGameplayState(StageStateMachine stageStateMachine)
+        public StageGameplayState(StageStateMachine stageStateMachine, WaveSpawner waveSpawner, 
+            EnemyWatcher enemyWatcher, PlayerWatcher playerWatcher)
         {
             this._stageStateMachine = stageStateMachine;
+            this._waveSpawner = waveSpawner;
+            _enemyWatcher = enemyWatcher;
+            _playerWatcher = playerWatcher;
         }
 
         public void Enter()
         {
             Debug.Log("EnterGameplayState");
 
-            InitialWatchers();
-        }
 
-        private GameObject GetPlayer()
-        {
-            var factory = (StagePlayerFactory)_stageStateMachine.GetStageBootstrapState().GetFactory<StagePlayerFactory>();
-            var player = factory.player;
-            return player;
         }
 
         public void Exit()
@@ -40,28 +37,9 @@ namespace Assets.Code.Level
         public void Update()
         {
             Debug.Log("StageGameplayState");
-        }
-
-        private List<GameObject> GetAllEnemies()
-        {
-            var allEnemies = new List<GameObject>();
-            var enemyFactory = (StageEnemyFactory)_stageStateMachine.GetStageBootstrapState().GetFactory<StageEnemyFactory>();
-            
-            allEnemies = enemyFactory.AllEnemies;
-            return allEnemies;
-        }
-
-        private void InitialWatchers()
-        {
-            _enemyWatcher = new EnemyWatcher(GetAllEnemies());
-            _playerWatcher = new PlayerWatcher(GetPlayer());
+            _waveSpawner.EnableFirstWave();
         }
     }
-}
-
-public interface IWatcher
-{
-    void Watch();
 }
 
 public class EnemyWatcher : IWatcher

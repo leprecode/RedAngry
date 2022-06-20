@@ -14,13 +14,14 @@ namespace Assets.Code.Level.StageStates
         public StageBootstrapState(StageStateMachine stageStateMachine)
         {
             this._stageStateMachine = stageStateMachine;
+
+            CreateAllFactories();
         }
 
         public void Enter()
         {
             Debug.Log("EnterStageBootstrapState");
 
-            CreateAllFactories();
             StartAllFactories();
 
             _stageStateMachine.SetGameplayState();
