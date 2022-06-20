@@ -12,7 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed3eb329efb2524eac51d69d569c6cb, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  _prefabsOfTypesEnemyWave:
-  - {fileID: 2408400359117473918, guid: 521c9a5f52defe14cb5274bc9d2363a1, type: 3}
-  - {fileID: 2408400359117473918, guid: 521c9a5f52defe14cb5274bc9d2363a1, type: 3}
-  _countForeachTypeOfEnemyWave: 1e0000000f000000
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1090219386143568, guid: a817c29ea6847604bb2c6c51d9a74bf1, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _enemies
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[System.Int32,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 3
+      Data: 15
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 

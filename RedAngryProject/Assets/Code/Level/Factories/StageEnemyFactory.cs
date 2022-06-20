@@ -38,26 +38,20 @@ namespace Assets.Code.Level.Factories
             for (int wave = 0; wave < _waves.Count; wave++)
             {
                 InstantiateEmptyObjectForWave(wave);
+                enemies = _waves[wave].Enemies;
+
+                foreach (var enemyKey in enemies.Keys)
+                {
+                    for (int enemyCount = 0; enemyCount < enemies[enemyKey]; enemyCount++)
+                    {
+                        GameObject newEnemy = GameObject.Instantiate(enemyKey,
+                                        _pointsToSpawn[NextSpawnPoint()].GetChild(wave));
+
+                        _allEnemies.Add(newEnemy);
+                        DisableEnemy(newEnemy);
+                    }
+                }
             }
-
-
-            /*
-                        for (int wave = 0; wave < _waves.Count; wave++)
-                        {
-                            InstantiateEmptyObjectForWave(wave);
-
-                            for (int enemyType = 0; enemyType < _waves[wave].GetWaveEnemiesTypes().Count; enemyType++)
-                            {
-                                for (int countEnemyOfType = 0; countEnemyOfType < _waves[wave].GetWaveEnemiesCount()[enemyType]; countEnemyOfType++)
-                                {
-                                    GameObject newEnemy = GameObject.Instantiate(_waves[wave].GetWaveEnemiesTypes()[enemyType],
-                                         _pointsToSpawn[NextSpawnPoint()].GetChild(wave));
-
-                                    _allEnemies.Add(newEnemy);
-                                    DisableEnemy(newEnemy);
-                                }
-                            }
-                        }*/
 
             SendAllEnemiesToStage();
         }
