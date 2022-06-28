@@ -13,21 +13,32 @@ namespace Assets.Code.Level
         private readonly List<GameObject> _wave2;
         private readonly List<GameObject> _wave3;
 
-        public WaveSpawner(Dictionary<GameObject, int> wave1, Dictionary<GameObject, int> wave2 = null, 
-            Dictionary<GameObject, int> wave3 = null)
+        public WaveSpawner(List<Dictionary<GameObject,int>> listOfCreatedEnemyWaves)
         {
             _wave1 = new List<GameObject>();
             _wave2 = new List<GameObject>();
             _wave3 = new List<GameObject>();
 
-            if (wave1 != null)
-                this._wave1 = WaveDictionaryToList(wave1);
 
-            if (wave2 != null)
-                this._wave2 = WaveDictionaryToList(wave2);
-            
-            if (wave3 != null)
-                this._wave3 = WaveDictionaryToList(wave3);
+            switch (listOfCreatedEnemyWaves.Count)
+            {
+                case 1:
+                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[0]);
+                    break;
+                case 2:
+                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[0]);
+                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[1]);
+                    break;
+                case 3:
+                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[0]);
+                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[1]);
+                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[2]);
+                    break;
+
+                default:
+                Debug.LogError("listOfCreatedEnemyWaves is empty");
+                    break;
+            }
         }
 
         public void EnableFirstWave()
@@ -48,6 +59,7 @@ namespace Assets.Code.Level
 
         private void EnableWave(List<GameObject> wave)
         {
+            //repair
             int RandomEnemy = Random.Range(0, wave.Count);
 
             _timer += Time.deltaTime;

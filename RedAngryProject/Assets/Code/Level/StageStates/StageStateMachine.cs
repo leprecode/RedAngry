@@ -28,22 +28,31 @@ namespace Assets.Code.Level
             _states = new Dictionary<Type, IStageState>();
             _states[typeof(StageBootstrapState)] = new StageBootstrapState(this);
 
-            List<GameObject> allEnemies = GetAllEnemies();
             GameObject player = GetPlayer();
 
-            Dictionary<GameObject, int> Wave1, Wave2, Wave3;
-            GetAllWaves(out Wave1, out Wave2/*, out Wave3*/);
+            var listOfCreatedEnemyWaves = GetCreatedEnemies();
 
-            _states[typeof(StageGameplayState)] = new StageGameplayState(this, new WaveSpawner(Wave1, Wave2/*,Wave3*/), new EnemyWatcher(allEnemies), new PlayerWatcher(player));
+
+            List<GameObject> allEnemies = new List<GameObject>();
+            GetAllEnemies(out allEnemies);
+
+
+            _states[typeof(StageGameplayState)] = new StageGameplayState(this, new WaveSpawner(listOfCreatedEnemyWaves), new EnemyWatcher(allEnemies), new PlayerWatcher(player));
             _states[typeof(StageGameOverState)] = new StageGameOverState(this);
             _states[typeof(StageVictoryState)] = new StageVictoryState(this);
         }
 
-        private void GetAllWaves(out Dictionary<GameObject, int> Wave1, out Dictionary<GameObject, int> Wave2/*,out Dictionary<GameObject, int> Wave3*/)
+        private void GetAllEnemies(out List<GameObject> allEnemies)
         {
-            Wave1 = StageEntryPoint.instance.StageData.GetWave(0).Enemies;
-            Wave2 = StageEntryPoint.instance.StageData.GetWave(1).Enemies;
-          //  Wave3 = StageEntryPoint.instance.StageData.GetWave(2).Enemies;
+            var enemyFactory = (StageEnemyFactory)GetStageBootstrapState().GetFactory<StageEnemyFactory>();
+            allEnemies = enemyFactory.allEnemies;
+        }
+
+        private List<Dictionary<GameObject,int>> GetCreatedEnemies()
+        {
+            var enemyFactory = (StageEnemyFactory)GetStageBootstrapState().GetFactory<StageEnemyFactory>();
+
+            return enemyFactory._listOfCreatedEnemyInWaves;
         }
 
         private GameObject GetPlayer()
@@ -53,12 +62,7 @@ namespace Assets.Code.Level
             return player;
         }
 
-        private List<GameObject> GetAllEnemies()
-        {
-            var enemyFactory = (StageEnemyFactory)GetStageBootstrapState().GetFactory<StageEnemyFactory>();
-            var allEnemies = enemyFactory.allEnemies;
-            return allEnemies;
-        }
+
 
         private void SetState(IStageState newState)
         {
