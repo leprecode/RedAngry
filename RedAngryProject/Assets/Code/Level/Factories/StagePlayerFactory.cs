@@ -9,16 +9,10 @@ namespace Assets.Code.Level.Factories
         private Transform _spawnPoint;
         public GameObject player { get; private set; }
 
-        public StagePlayerFactory(StageData stageData)
+        public StagePlayerFactory(StageData stageData, Transform spawnPoint)
         {
             this._stageData = stageData;
-        }
-
-        public void Create()
-        {
-            _spawnPoint = GameObject.FindGameObjectWithTag(tagPlayerSpawnPoint).transform;
-
-            Debug.Log("StagePlayerFactory");
+            _spawnPoint = spawnPoint;
 
             CameraCreate();
             PlayerCreate(_spawnPoint.position);

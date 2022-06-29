@@ -27,12 +27,12 @@ namespace Assets.Code.Level
                     break;
                 case 2:
                     _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[0]);
-                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[1]);
+                    _wave2 = WaveDictionaryToList(listOfCreatedEnemyWaves[1]);
                     break;
                 case 3:
                     _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[0]);
-                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[1]);
-                    _wave1 = WaveDictionaryToList(listOfCreatedEnemyWaves[2]);
+                    _wave2 = WaveDictionaryToList(listOfCreatedEnemyWaves[1]);
+                    _wave3 = WaveDictionaryToList(listOfCreatedEnemyWaves[2]);
                     break;
 
                 default:
@@ -43,7 +43,6 @@ namespace Assets.Code.Level
 
         public void EnableFirstWave()
         {
-            Debug.Log("SpawnFirstWave");
             EnableWave(_wave1);
         }
 

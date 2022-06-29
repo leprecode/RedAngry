@@ -22,8 +22,6 @@ namespace Assets.Code.Level.StageStates
         {
             Debug.Log("EnterStageBootstrapState");
 
-            StartAllFactories();
-
             _stageStateMachine.SetGameplayState();
         }
 
@@ -74,7 +72,21 @@ namespace Assets.Code.Level.StageStates
 
         private void CreatePlayerFactory()
         {
-            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(StageEntryPoint.instance.StageData);
+            var mapFactory = (StageMapFactory)GetFactory<StageMapFactory>();
+
+            if (mapFactory == null)
+            {
+                Debug.Log("MapFactoryIsNull");
+            }
+
+            var spawnPointPosition = mapFactory.spawnPointForPlayer.transform;
+
+            if (spawnPointPosition == null)
+            {
+                Debug.Log("SpawnPointIsNull");
+            }
+
+            _factories[typeof(StagePlayerFactory)] = new StagePlayerFactory(StageEntryPoint.instance.StageData, spawnPointPosition);
         }
 
         private void CreateMapFactory()
@@ -83,13 +95,6 @@ namespace Assets.Code.Level.StageStates
             _factories[typeof(StageMapFactory)] = new StageMapFactory(stagePrefab);
         }
 
-        private void StartAllFactories()
-        {
-            foreach (var factory in _factories)
-            {
-                factory.Value.Create();
-            }
-        }
         private List<Wave> GetWaves()
         {
             List<Wave> waves = new List<Wave>();

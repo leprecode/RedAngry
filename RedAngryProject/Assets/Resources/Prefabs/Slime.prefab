@@ -502,7 +502,7 @@ MonoBehaviour:
   _movementSpeed: 2
   _rotationSpeed: 10
   _body: {fileID: 2408187860217820096}
-  _destroyedBody: {fileID: 6452184268051388708, guid: 838f4c19dca13d04889a3b39d3a6bff1,
+  _destroyedBody: {fileID: 6452184268051388708, guid: e3134dfa1a18c614399994ef87b84ac6,
     type: 3}
   _onDestroyVFX: {fileID: 2724948099300090138, guid: 0d8636f291fe9a64f86855b800f0b689,
     type: 3}

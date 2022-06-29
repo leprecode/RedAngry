@@ -2,7 +2,6 @@ using Assets.Code.Level.Factories;
 using Assets.Code.Level.StageStates;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Code.Level
@@ -26,8 +25,6 @@ namespace Assets.Code.Level
         public void Enter()
         {
             Debug.Log("EnterGameplayState");
-
-
         }
 
         public void Exit()
@@ -39,33 +36,5 @@ namespace Assets.Code.Level
             Debug.Log("StageGameplayState");
             _waveSpawner.EnableFirstWave();
         }
-    }
-}
-
-public class EnemyWatcher : IWatcher
-{
-    private readonly List<GameObject> _allEnemies;
-
-    public EnemyWatcher(List<GameObject> allEnemies)
-    {
-        this._allEnemies = allEnemies;
-    }
-
-    public void Watch()
-    {
-    }
-}
-
-public class PlayerWatcher : IWatcher
-{
-    private readonly GameObject _player;
-
-    public PlayerWatcher(GameObject player)
-    {
-        this._player = player;
-    }
-
-    public void Watch()
-    {
     }
 }

@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Code.Level.Factories
 {
     public class StageEnemyFactory : IStageFactory
     {
-        private const string _tagToSearch = "SpawnPoints";
         private readonly List<Transform> _pointsToSpawn;
         private readonly List<Wave> _waves;
         private int _currentSpawnPoint = 0;
@@ -28,13 +25,6 @@ namespace Assets.Code.Level.Factories
 
             CreateEnemies();
 
-        }
-
-        public void Create()
-        {
-            Debug.Log("StageEnemyFactory");
-//            CreateEnemies();
-            //Перенести в конструктор
         }
 
         private void CreateEnemies()
@@ -63,12 +53,7 @@ namespace Assets.Code.Level.Factories
                     }
 
                 }
-                Debug.Log("Count of wave" + _listOfCreatedEnemyInWaves[wave].Count);
             }
-
-            Debug.Log("Count ofListOfCreatedEnemies " + _listOfCreatedEnemyInWaves.Count);
-
-
         }
 
         private void DisableEnemy(GameObject newEnemy)
@@ -100,5 +85,7 @@ namespace Assets.Code.Level.Factories
 
             return _currentSpawnPoint;
         }
+
+
     }
 }

@@ -69,7 +69,7 @@ namespace Assets.Code.Enemies
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("PlayerLogic"))
+            if (collision.gameObject.CompareTag("Player"))
             {
                 collision.gameObject.GetComponent<IDamagable>().ApplyDamage(_enemy._damage);
             }

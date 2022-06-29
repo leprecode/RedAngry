@@ -20,7 +20,7 @@ namespace Assets.Code.Enemies
         public void Enter()
         {
             Debug.Log("EnterEnemyBehaviourAggresive");
-            _target = GameObject.FindGameObjectWithTag("PlayerLogic").transform;
+            _target = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
         public void Exit()
