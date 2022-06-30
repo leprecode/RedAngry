@@ -15,22 +15,36 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 5865491374852165885, guid: 2f47b3fcf40cf8a4d9fe3f22ce465cf1, type: 3}
+    - {fileID: 7380866399585681473, guid: 0a76799e4f76a5648bdef87560569665, type: 3}
+    - {fileID: 496313440802057350, guid: 586eda47890d0c549851918e65453e5c, type: 3}
+    - {fileID: 5148835146380900201, guid: c0847e6c6d38fcc438f917cf91fafc53, type: 3}
+    - {fileID: 2289996845966397216, guid: d87fc154464a0b645b75346181736ed9, type: 3}
+    - {fileID: 4486081142685387913, guid: 15aeffd1ebe08ea47b4b6bfad481604f, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _stageMapPrefab
+      Entry: 10
+      Data: 0
+    - Name: _playerPrefab
+      Entry: 10
+      Data: 1
+    - Name: _mainCanvasPrefab
+      Entry: 10
+      Data: 2
+    - Name: _healthCanvasPrefab
+      Entry: 10
+      Data: 3
+    - Name: _playerWeaponPrefab
+      Entry: 10
+      Data: 4
+    - Name: _cameraPrefab
+      Entry: 10
+      Data: 5
   _waves:
   - {fileID: 11400000, guid: 80e2b791514a7f34f844139ca710e7e3, type: 2}
   - {fileID: 11400000, guid: b525b44d2c2e8474b82d8632af0dd44a, type: 2}
-  _stageMapPrefab: {fileID: 5865491374852165885, guid: 2f47b3fcf40cf8a4d9fe3f22ce465cf1,
-    type: 3}
-  _playerPrefab: {fileID: 7380866399585681473, guid: 0a76799e4f76a5648bdef87560569665,
-    type: 3}
-  _mainCanvasPrefab: {fileID: 496313440802057350, guid: 586eda47890d0c549851918e65453e5c,
-    type: 3}
-  _playerWeaponPrefab: {fileID: 2289996845966397216, guid: d87fc154464a0b645b75346181736ed9,
-    type: 3}
-  _cameraPrefab: {fileID: 4486081142685387913, guid: 15aeffd1ebe08ea47b4b6bfad481604f,
-    type: 3}

@@ -5,7 +5,7 @@ namespace Assets.Code.PlayerLogic
 {
     public class PlayerHealth : MonoBehaviour, IDamagable, IHealable
     {
-        public delegate void OnHealthChanged(float previousHealth, float currentHealth);
+        public delegate void OnHealthChanged(float currentHealth, float takedDamage);
         public delegate void OnDie();
 
         public event OnHealthChanged OnDamage;
@@ -14,10 +14,13 @@ namespace Assets.Code.PlayerLogic
 
         //onDie event ??
 
-        [SerializeField] private float _currentHealth;
-        [SerializeField] private readonly float _maxHealth;
+        public float _currentHealth { get; private set; }
 
-        private void Start()
+        public float MaxHealth => _maxHealth;
+
+        [SerializeField] private float _maxHealth;
+
+        private void Awake()
         {
             _currentHealth = _maxHealth;
         }
@@ -29,7 +32,7 @@ namespace Assets.Code.PlayerLogic
             {
                 _currentHealth -= damage;
 
-                OnDamage?.Invoke(_currentHealth, _currentHealth - damage);
+                OnDamage?.Invoke(_currentHealth, damage);
                 CheckHealth();
             }
         }
@@ -50,7 +53,8 @@ namespace Assets.Code.PlayerLogic
             if (_currentHealth > _maxHealth)
                 _currentHealth = _maxHealth;
 
-            OnHeal?.Invoke(_currentHealth, previousHealth);
+            //repair delegate
+            OnHeal?.Invoke(_currentHealth, 0f);
         }
 
         private void Die()

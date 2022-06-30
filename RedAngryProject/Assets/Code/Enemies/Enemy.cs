@@ -17,7 +17,7 @@ namespace Assets.Code.Enemies
         [SerializeField] public float _health;
 
         private EnemyStateMachine _stateMachine;
-        public StageGameplayState stageGameplayState { get; private set; }
+       /* public StageGameplayState stageGameplayState { get; private set; }
         public float health { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public float movementSpeed { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public float rotationSpeed { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
@@ -25,7 +25,7 @@ namespace Assets.Code.Enemies
         public EnemyStateMachine brain { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public GameObject body { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         public GameObject destroyedBody { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-        public ParticleSystem onDestroyVFX { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public ParticleSystem onDestroyVFX { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException();}*/
 
         private void Start()
         {

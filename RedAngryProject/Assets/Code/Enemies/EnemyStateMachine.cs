@@ -71,6 +71,7 @@ namespace Assets.Code.Enemies
         {
             if (collision.gameObject.CompareTag("Player"))
             {
+                Debug.Log("Player Damaged " + _enemy._damage);
                 collision.gameObject.GetComponent<IDamagable>().ApplyDamage(_enemy._damage);
             }
         }

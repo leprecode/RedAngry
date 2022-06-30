@@ -8,11 +8,12 @@ namespace Assets.Code.Level
     public class StageData : SerializedScriptableObject
     {
         [SerializeField] private List<Wave> _waves = new List<Wave>();
-        [SerializeField] private GameObject _stageMapPrefab;
-        [SerializeField] private GameObject _playerPrefab;
-        [SerializeField] private GameObject _mainCanvasPrefab;
-        [SerializeField] private GameObject _playerWeaponPrefab;
-        [SerializeField] private GameObject _cameraPrefab;
+        [SerializeField] private readonly GameObject _stageMapPrefab;
+        [SerializeField] private readonly GameObject _playerPrefab;
+        [SerializeField] private readonly GameObject _mainCanvasPrefab;
+        [SerializeField] private readonly GameObject _healthCanvasPrefab;
+        [SerializeField] private readonly GameObject _playerWeaponPrefab;
+        [SerializeField] private readonly GameObject _cameraPrefab;
         public List<Wave> GetAllWaves() => _waves;
         public GameObject StageMapPrefab => _stageMapPrefab;
 

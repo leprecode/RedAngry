@@ -17,12 +17,17 @@ namespace Assets.Code.Level.Factories
             CameraCreate();
             PlayerCreate(_spawnPoint.position);
             PlayerWeaponCreate(_spawnPoint.position);
-            PlayerCanvasCreate();
+            PlayerMainCanvasCreate();
+            PlayerHealthCanvasCreate();
         }
 
-        private void PlayerCanvasCreate()
+        private void PlayerMainCanvasCreate()
         {
             Object.Instantiate(_stageData.MainCanvasPrefab);
+        }       
+        private void PlayerHealthCanvasCreate()
+        {
+            //Object.Instantiate(_stageData.HealthCanvasPrefabs);
         }
 
         private void PlayerWeaponCreate(Vector3 position)
