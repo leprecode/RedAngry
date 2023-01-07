@@ -13,9 +13,7 @@ The main goal of this project is make a **game architecture** based on a **state
 
 
 ## Gameplay 
-
-[![Now in Android: 55]] // Thumbnail
-(https://www.youtube.com/shorts/w-FnSnb08iU"Now in Android: 55")
+[Gameplay video](https://www.youtube.com/shorts/w-FnSnb08iU))
 
 ![](https://github.com/leprecode/RedAngry/blob/main/Media/LoadingRA.png)
 ![](https://github.com/leprecode/RedAngry/blob/main/Media/MainMenu.png)
