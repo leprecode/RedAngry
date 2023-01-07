@@ -1,6 +1,6 @@
 # RedAngry
 
-##A bout
+## About
 
 Unity 3D Game for Android devices. 
 Built in Unity 2021f
